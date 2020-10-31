@@ -1,0 +1,86 @@
+<div class="slider-area2 slider-height2 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2><span style="color: #fecd32;">| </span>Tus
+                        Mascotas Registradas <span class="flaticon-animal-kingdom"></span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container p-4">
+
+    <div class="row">
+
+        <div class="mx-auto" style="width: 400px;">
+            <div class="card card-body text-center shadow-lg p-3 mb-5 bg-white rounded"
+                style="border: none; !important">
+                <p>Agrega tu nueva mascota</p>
+                <a href="/mascotas/add" class="genric-btn default circle"
+                    style="background: #fecd32; color: white;">¡Agregar!</a>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class="container mt-20">
+        <div class="card">
+            <div class="card-body border border-warning" style="background-color: white !important">
+                <i class="far fa-clock" style="color:red;"></i> No olvides completar los datos de
+                tus mascotas. La
+                <b>Historia Clínica</b> y <b>Esquema de Vacunación</b> deben mantenerse actualizados.
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            {{#each mascotas}}
+
+            <div class="col-md-4">
+                <div class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                    <div class="card-body">
+                        <a href="{{url}}">
+                            <h3 class="card-title text-uppercase" style="color: #f2b800;">
+                                {{nombre_mascota}}
+                            </h3>
+                        </a>
+                        <img src="{{imagen_mascota}}" class="img-fluid" alt="foto de mascota">
+                        <p class="m-2"><span style="color: #f2b800;">{{padrinazgo_mascota}}</span></p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Especie:</span>
+                            {{especie_mascota}}. {{ otra_especie }}
+                        </p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Raza:</span> {{raza_mascota}}.</p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Ubicación:</span>
+                            {{direccion_mascota}}.
+                        </p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Tamaño:</span> {{tamaño_mascota}} cm.
+                        </p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Microchip:</span>
+                            {{microchip_mascota}}.
+                        </p>
+                        <p class="m-1" align="left"><span style="color: #f2b800;">Rasgos:</span>
+                            {{rasgos_mascota}}.
+                        </p>
+
+                        <br>
+                        <!-- <p>{{timeago created_at}}</p> -->
+                        <!--<a href="mascotas/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
+                        <a href="mascotas/edit/{{id}}" class="genric-btn primary">Actualizar Datos</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {{else}}
+            <div class="col-md-4 mx-auto">
+                <div class="card card-body text-center">
+                    <p>No tienes Mascotas agregadas aún ☹</p>
+                    <a href="/mascotas/add" class="genric-btn default circle"
+                        style="background-color:#fecd32; color:white">¡Agrega Una!</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

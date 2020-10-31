@@ -1,0 +1,73 @@
+<div class="container mt-80">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h2>| Crea un Reporte</h2>
+            <div class="card mt-20">
+                <div class="card-body">
+                    <form action="/reportes/add-reportes" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-lg-2 col-md-2">
+                                <label for=""><b>Tipo de reporte:</b></label>
+                                <div class="select-itms">
+                                    <select name="tipo_denuncia_reportes" required>
+
+                                        <option value="Reporte" selected>Reporte
+                                        </option>
+                                        <!--<option value="Denuncia">Denuncia
+                                        </option>
+                                            <option value="PQR">PQR
+                                        </option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <label for=""><b>Causa:</b></label>
+                                <div class="form-group">
+                                    <select name="evento_reportes" required>
+
+                                        <!--<option value="Animales Maltratados">Animales Maltratados
+                                        </option>
+                                        <option value="Animales Abandonados">Animales Abandonados
+                                        </option>-->
+                                        <!--<option value="Conflictos y ataques.">Contravenciones, Conflictos y Ataques
+                                        </option>-->
+                                        <option value="Animales heridos, graves accidentados">Animales heridos,
+                                            graves accidentados
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Dirección:</b></label>
+                                <input type="text" class="form-control" name="ubicacion_reportes"
+                                    placeholder="Lugar de los hechos" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Describenos lo que quieres reportar:</b></label>
+                                <textarea type="text" class="form-control" name="descripcion_reportes"
+                                    placeholder="Descripción" rows="5" maxlength="200" required></textarea>
+                                <p align="right"><i>Escribe hasta 200 caracteres</i></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!-- <label for=""><b>Adjuntar Evidencia:</b></label>
+                                <input class="genric-btn radius" type="file" multiple="true" accept="image/*"
+                                    name="evidencia_reportes">
+                                <div class="mt-10">
+                                    <strong>* Subir máximo 4 imágenes como evidencia.</strong>
+                                </div>-->
+                            </div>
+                        </div>
+                        <strong style="color: red;">Al dar click en "Enviar Reporte" este será publicado y no
+                            podrá ser editado o
+                            eliminado. Por favor asegúrese de que todo lo registrado sea verídico.</strong>
+                        <div class="form-group mt-10">
+                            <button class="btn btn-success btn-block">Enviar Reporte</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="slider-area2 slider-area4 slider-height2 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2><span style="color: #12a654;">| </span>Consultas <img src="/../img/SeBuscaPerrito.png" alt="icono modulo busca"></h2>
+                   <p>En el <b>Módulo Consultas</b> de <b>SIAN</b>, puedes buscar animales extraviados, hurtados o hallados en busca de un nuevo hogar</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container p-4">
+    <div class="row">
+
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center shadow-lg p-3 mb-5 bg-white rounded"
+                style="border: none; !important">
+                <p>Queremos que encuentres a tu mascota. Publicala aquí para que la encuentren pronto</p>
+                <a href="/busca/add-extraviado" class="genric-btn default circle"
+                    style="background: #12a654; color: white;">¡Publicar!</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {{#each buscaPublico}}
+        <div class="col-md-3">
+            <br>
+            <div class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase" style="color: #12a654;; font-weight: bold;">
+                        Se Busca
+                    </h3>
+                    <img src="{{foto_seBusca}}" class="img-fluid" alt="foto de mascota">
+                    <p align="center" style="color: #12a654;">{{tipo_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Nombre:</span> {{nombre_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Raza:</span> {{raza_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Edad:</span> {{edad_seBusca}} años</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Visto en:</span>
+                        {{ubicacion_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Caracteristicas:</span>
+                        {{caracteristica_seBusca}}
+                    </p>
+                    <br>
+                    <!-- <p>{{timeago created_at}}</p> -->
+                    <!--<a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
+                    <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        <br>
+        {{else}}
+
+        {{/each}}
+    </div>
+</div>

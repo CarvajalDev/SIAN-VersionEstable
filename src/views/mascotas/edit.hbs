@@ -1,0 +1,147 @@
+<div class="container mt-80">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h2>| Actualiza los datos de tu Mascota</h2>
+            <div class="card mt-20">
+                <div class="card-body">
+                    <form action="/mascotas/edit/{{mascota.id}}" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-lg-6 col-md-6">
+                                <label for=""><b>Foto de Perfil de tu Mascota:</b></label>
+                                <input class="genric-btn radius" type="file" name="imagen_mascota" accept="image/*"
+                                    required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><b>Nombre de tu Mascota:</b></label>
+                                <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
+                                    placeholder="Nombre" value="{{mascota.nombre_mascota}}" autofocus required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo o Calidad de Titular:</b></label>
+                                <div class="select-itms">
+                                    <select name="padrinazgo_mascota" required>
+                                        <option value="Propietario">Propietario</option>
+                                        <option value="Padrinazgo individual">Padrinazgo Individual</option>
+                                        <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo de Especie:</b></label>
+                                <div class="select-itms">
+                                    <select name="especie_mascota" required>
+                                        <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies5.nombre_especie}}">{{especies5.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies6.nombre_especie}}">{{especies6.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Otra Especie:</b></label>
+                                <input type="text" class="form-control" name="otra_especie" placeholder="Otra Especie"
+                                    value="{{mascota.otra_especie}}">
+                            </div>
+                            <div class="form-group col-lg-2 col-md-2">
+                                <label for=""><b>Tipo de Raza:</b></label>
+                                <div>
+                                    <select name="raza_mascota" required>
+
+                                        <option value="{{mascota.raza_mascota}}">{{mascota.raza_mascota}}
+                                        </option>
+                                        <option value="Desconocida">No se conoce
+                                        </option>
+                                        {{#each raza}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Dirección:</b></label>
+                                <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
+                                    value="{{mascota.direccion_mascota}}" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Fecha de Nacimiento:</b></label>
+                                <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Tamaño de tu Mascota:</b></label>
+                                <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
+                                    placeholder="Tamaño de mascota (cm)" value="{{mascota.tamaño_mascota}}" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Numero de Microchip:</b></label>
+                                <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
+                                    placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" maxlength="10"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row mt-10">
+                            <div class="col-lg-6 col-md-6">
+                                <label for=""><b>Conforme el art. 7 de la ley 2054 de 2020. Tu mascota es raza de:
+                                    </b></label>
+                                <div class="select-itms">
+                                    <input type="radio" name="peligrosa_mascota" value="si" required>
+                                    <label>Manejo o Cuidado Especial</label><br>
+                                    <input type="radio" name="peligrosa_mascota" value="no" required>
+                                    <label>No es de Manejo Especial</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for=""><b>Describe los rasgos especiales:</b></label>
+                                <textarea type="text" class="form-control" name="rasgos_mascota"
+                                    placeholder="Rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
+                                    rows="5" maxlength="50" required>{{mascota.rasgos_mascota}}</textarea>
+                                <p align="right"><i>Escribe hasta 50 caracteres</i></p>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg-4 col-md-4">
+                                    <label for=""><b>Historia Clínica de tu Mascota (PDF o DOC):</b></label>
+                                    <input type="file" name="historia_clinica_mascota" class="genric-btn radius"
+                                        id="exampleInputFile" aria-describedby="fileHelp"
+                                        accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        required>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <label for=""><b>Compromiso Manejo Especial:</b></label><br>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/sian-97abc.appspot.com/o/Carta%20de%20Compromiso%20Mascotas%20de%20Manejo%20Especial.docx?alt=media&token=207be197-039a-4aca-94e5-b524a13db0e6"
+                                        download="Formato Denuncia Maltrato Animal.docx"
+                                        style="color: #1f2c7b; text-decoration: underline;"> Descargar Carta</a>
+                                    <input type="file" name="carta_mascota_peligrosa" class="genric-btn radius"
+                                        id="exampleInputFile" aria-describedby="fileHelp"
+                                        accept=".docx,application/msword" required>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <label for=""><b>Subir Esquema de Vacunación (PNG, JPG, JPEG):</b></label>
+                                    <input type="file" name="vacunacion_mascota" class="genric-btn radius"
+                                        id="exampleInputFile" aria-describedby="fileHelp" accept="image/*" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-30">
+                            <button class="btn btn-success btn-block">
+                                Actualizar Datos de Mi Mascota
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

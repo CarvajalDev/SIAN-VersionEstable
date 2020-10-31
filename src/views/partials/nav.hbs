@@ -1,0 +1,70 @@
+<div class="header-area header-transparent">
+    <div class="main-header header-sticky">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+
+                <div class="col-xl-2 col-lg-2 col-md-1">
+                    <div class="logo">
+                        <a href="/"><img src="/../img/logo_web.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-10">
+                    <div class="menu-main d-flex align-items-center justify-content-end">
+
+                        <div class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    {{#if user}}
+                                    <li><a href="/">inicio</a></li>
+                                    <li><a>Mis Mascotas</a>
+                                        <ul class="submenu">
+                                            <li><a href="/mascotas">Todas las Mascotas</a></li>
+                                            <li><a href="/mascotas/razas-peligrosas">Mascotas Cuidado Especial</a></li>
+                                            <li><a href="/mascotas/padrinazgo-individual">Padrinazgo Individual</a>
+                                            </li>
+                                            <li><a href="/mascotas/padrinazgo-comunitario">Padrinazgo
+                                                    Comunitario</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Mis Reportes</a>
+                                        <ul class="submenu">
+                                            <li><a href="/reportes">Ver Todos</a></li>
+                                            <li><a href="/reportes/list-denunciados">Denuncias</a></li>
+                                            <li><a href="/reportes/list-reportados">Reportes</a></li>
+                                            <li><a href="/reportes/list-pqrs">PQRS</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Se busca</a>
+                                        <ul class="submenu">
+                                            <li><a href="/busca">Tus mascota extraviadas, hurtadas o halladas</a></li>
+                                            <li><a href="/busca/list-publico">Encuentra una mascota</a></li>
+                                            <!-- <li><a href="/busca/list-extraviado">Animales Extraviados, Hurtados o Hallados </a></li>
+                                            <li><a href="/busca/list-hurtado">Animales Hurtados</a></li>-->
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="far fa-user-circle"></i> {{user.nombre}}</a>
+                                        <ul class="submenu">
+                                            <li><a href="/profile">Perfil</a></li>
+                                            <li><a href="/logout">Salir</a></li>
+                                        </ul>
+                                    </li>
+                                    {{else}}
+                                    <li><a href="/signin">Entrar</a></li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                            <a href="/signup" class="header-btn">Registrarse</a>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

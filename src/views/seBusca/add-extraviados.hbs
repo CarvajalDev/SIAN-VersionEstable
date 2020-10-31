@@ -1,0 +1,84 @@
+<div class="container mt-80">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h2>| Publica tu Mascota: Extraviada, Hurtada o Hallada.</h2>
+            <div class="card mt-20">
+                <div class="card-body">
+                    <form action="/busca/add-extraviado" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-lg-4 col-md-4">
+                                <label for=""><b>Foto de Mascota Extraviada:</b></label>
+                                <input class="genric-btn radius" type="file" name="foto_seBusca" accept="image/*"
+                                    required>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Tipo de Busqueda:</b></label>
+                                <div class="form-group">
+                                    <select name="tipo_seBusca" required>
+                                        <option value="Animales Extraviados">Animales Extraviados
+                                        </option>
+                                        <option value="Animales Hurtados">Animales Hurtados
+                                        </option>
+                                        <option value="Animales Hallados">Animales Hallados
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for=""><b>Raza de tu Mascota:</b></label>
+                                <div class="form-group">
+                                    <select name="raza_seBusca" required>
+                                        <option value="desconocida">No se conoce
+                                        </option>
+                                        {{#each raza}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <label for=""><b>Edad de la Mascota:</b></label>
+                                <input type="text" id="solonumeros" class="form-control" name="edad_seBusca"
+                                    placeholder="Edad" autofocus required>
+                            </div>
+                        </div>
+                        <div class="form-row mt-10 ">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><b>Nombre:</b></label>
+                                <input type="text" id="myminNombre" class="form-control" name="nombre_seBusca"
+                                    placeholder="Nombre de la Mascota Extraviada" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Lugar Donde se Extravió:</b></label>
+                                <input type="text" class="form-control" name="ubicacion_seBusca"
+                                    placeholder="Lugar donde se vió la ultima vez" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Características Físicas:</b></label>
+                                <textarea type="text" class="form-control" rows="4" name="caracteristica_seBusca"
+                                    placeholder="Caracteristicas Fisicas de la Mascota" maxlength="100"
+                                    required></textarea>
+                                <p align="right"><i>Escribe hasta 100 caracteres</i></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Número de Contacto (Fijo o Celular):</b></label>
+                                <input type="text" id="telefono" class="form-control" name="telefono_seBusca"
+                                    placeholder="Teléfono">
+                                <label for=""><b>¿Ofreces recompensa? En caso de mascota extraviada:</b></label>
+                                <input type="text" id="recompensa" class="form-control" name="recompensa_seBusca"
+                                    placeholder="$200.000">
+                            </div>
+                        </div>
+                        <div class="form-group mt-30">
+                            <button class="btn btn-success btn-block">
+                                Publicar Mascota Extraviada
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

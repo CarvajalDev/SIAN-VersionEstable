@@ -1,0 +1,82 @@
+<div class="container mt-100 ">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/reportes/add-denuncias" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-lg-2 col-md-2">
+                                <label for=""><b>Tipo de reporte:</b></label>
+                                <div class="select-itms">
+                                    <select name="tipo_denuncia_reportes" required>
+                                        <option value="Denuncia" selected>Denuncia
+                                        </option>
+                                        <!-- <option value="Reporte">Reporte
+                                        </option>
+                                        <option value="PQR">PQR
+                                        </option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <label for=""><b>Causa:</b></label>
+                                <div class="form-group">
+                                    <select name="evento_reportes" required>
+                                        <option value="Animales Maltratados">Animales Maltratados
+                                        </option>
+                                        <option value="Animales Abandonados">Animales Abandonados
+                                        </option>
+                                        <!-- <option value="Animales Encontrados">Animales Encontrados
+                                        </option> -->
+                                        <option value="Contravenciones, Conflictos y Ataques">Contravenciones,
+                                            Conflictos y Ataques
+                                        </option>
+                                        <!--<option value="Animales heridos, graves accidentados">Animales heridos,
+                                            graves accidentados
+                                        </option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Dirección:</b></label>
+                                <input type="text" class="form-control" name="ubicacion_reportes"
+                                    placeholder="Lugar de los hechos" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Describe lo que nos quieres denunciar:</b></label>
+                                <textarea type="text" class="form-control" name="descripcion_reportes"
+                                    placeholder="Descripción" rows="5" maxlength="240" required></textarea>
+                                <p align="right"><i>Escribe hasta 240 caracteres</i></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><b>Adjuntar Fotos de Evidencia (4 fotos):</b></label>
+                                <input class="genric-btn radius" type="file" multiple="true" accept="image/*"
+                                    name="evidencia_reportes" required>
+                                <div class="mt-10">
+                                    <strong style="font-size: 11px;"><span style="color:red;">*</span> Subir
+                                        obligatoriamente 4
+                                        imágenes como evidencias.</strong>
+                                </div>
+                                <label for=""><b>Adjuntar Formato de Denuncia:</b></label>
+                                <a href="https://firebasestorage.googleapis.com/v0/b/sian-97abc.appspot.com/o/Formato-Denuncia-Maltrato-Animal-Contravencion.docx?alt=media&token=b8cd59e4-97bc-4137-b3a9-790c8973f601"
+                                    download="Formato Denuncia Maltrato Animal.docx"
+                                    style="color: #1f2c7b; text-decoration: underline;"> Descargar formato</a>
+                                <input class="genric-btn radius" type="file" name="evidencia_formato"
+                                    accept=".docx,application/msword" required>
+
+                            </div>
+                        </div>
+                        <strong style="color: red;">Al dar click en "Enviar Denuncia" esta será publicada y no
+                            podrá ser editada o
+                            eliminada. Por favor asegúrese de que todo lo registrado sea verídico.</strong>
+                        <div class="form-group mt-10">
+                            <button class="btn btn-success btn-block">Enviar Denuncia</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

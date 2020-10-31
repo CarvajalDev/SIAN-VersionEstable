@@ -1,0 +1,32 @@
+<div class="container mt-80">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h2>| Edita tu Reporte</h2>
+            <div class="card mt-20">
+                <div class=" card-body">
+                    <form action="/reportes/edit/{{reportes.id}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="evidencia_reportes"
+                                placeholder="Subir evidencias" value="{{reportes.evidencia_reportes}}" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="ubicacion_reportes"
+                                value="{{reportes.ubicacion_reportes}}" placeholder="Lugar de los hechos">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="tipo_denuncia_reportes"
+                                value="{{reportes.tipo_denuncia_reportes}}" placeholder="Tipo de denuncia">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" name="descripcion_reportes"
+                                placeholder="Descripcion" rows="3">{{reportes.descripcion_reportes}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Editar Reporte</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>†

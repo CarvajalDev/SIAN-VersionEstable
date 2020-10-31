@@ -1,0 +1,150 @@
+<div class="container mt-125">
+    <div class=" row">
+        <div class="col-md-9 mx-auto">
+            <div class="card">
+                <div class="card-header text-center" style=" background-color: #FFFFFF;">
+                    <h3>Registrarse en SIAN</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/signup" method="POST" class="needs-validation">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><span style="color: red;">*</span><b> Nombres:</b></label>
+                                <input type="text" id="myminNombre" name="nombre" placeholder="Nombres"
+                                    class="form-control" maxlength="30" autofocus required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Apellidos:</b></label>
+                                <input type="text" id="myminApellido" name="apellido" placeholder="Apellidos"
+                                    class="form-control" maxlength="30" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><span style="color: red;">*</span><b> Numero de telefono:</b></label>
+                                <input type="text" id="mytelefono" name="telefono" placeholder="Número de Teléfono"
+                                    class="form-control" minlength="7" maxlength="13" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Correo Electrónico:</b></label>
+                                <input type="text" id="email" name="email" placeholder="Correo Electronico"
+                                    class="form-control" maxlength="30" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><span style="color: red;">*</span><b> Contraseña:</b></label>
+                                <input type="password" id="passwordConfirm" name="password" placeholder="Contraseña"
+                                    class="form-control" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Tu contraseña debe contener al menos un número y una letra mayúscula. Mínimo 8 caracteres" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Repetir Contraseña:</b></label>
+                                <input type="password" id="mypassword" placeholder="Repetir Contraseña"
+                                    class="form-control" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Tu contraseña debe contener al menos un número y una letra mayúscula. Mínimo 8 caracteres" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-4 col-md-4">
+                                <label for="inputState"><span style="color: red;">*</span><b> Tipo de Documento:</b></label>
+                                <div class="select-itms">
+                                    <select name="tipo_documento" required>
+                                        <option value="">Elegir opción</option>
+                                        <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                                        <option value="Tarjeta de identidad">Tarjeta de Identidad</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                        <option value="Registro Civil">Registro Civil</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Numero de Documento:</b></label>
+                                <input type="text" id="myint" name="documento" placeholder="Numero de Documento"
+                                    class="form-control" minlength="7" maxlength="13" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-lg-4 col-md-4">
+                                <label for="inputState"><span style="color: red;">*</span><b> Ciudad:</b></label>
+                                <div class="select-itms">
+                                    <select name="municipio" required>
+                                        <option value="">Elegir ciudad</option>
+                                        <option value="Neiva">Neiva</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Dirección de Residencia:</b></label>
+                                <input type="text" name="direccion" placeholder="Dirección de Residencia"
+                                    class="form-control" minlength="6" maxlength="40" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="inputPassword4"><span style="color: red;">*</span><b> Barrio:</b></label>
+                                <input type="text" name="barrio" placeholder="Barrio" class="form-control" minlength="4" maxlength="30" required>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label for="inputState"><span style="color: red;">*</span><b> Comuna:</b></label>
+                                <div class="select-itms">
+                                    <select name="comuna" required>
+                                        <option value="">Elegir comuna</option>
+                                        <option value="1">Comuna 1</option>
+                                        <option value="2">Comuna 2</option>
+                                        <option value="3">Comuna 3</option>
+                                        <option value="4">Comuna 4</option>
+                                        <option value="5">Comuna 5</option>
+                                        <option value="6">Comuna 6</option>
+                                        <option value="7">Comuna 7</option>
+                                        <option value="8">Comuna 8</option>
+                                        <option value="9">Comuna 9</option>
+                                        <option value="10">Comuna 10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <label for="inputState"><span style="color: red;">*</span><b> Entidad u Organización:</b></label>
+                                <div class="select-itms">
+                                    <select name="tipo_usuario" required>
+                                        <option value="">Elegir rol</option>
+                                        <option value="Ciudadano">Ciudadano</option>
+                                        <option value="Autoridades Administrativas">Autoridades Administrativas</option>
+                                        <option value="Org. Judiciales">Org. Judiciales</option>
+                                        <option value="Org. Animalistas">Org. Animalistas</option>
+                                        <option value="Org. Comunitarias">Org. Comunitarias</option>
+                                        <option value="Academia">Academia</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <span style="color: red;">* Campos Obligatorios</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-check mt-10">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="remember" required> Acepto
+                                        términos y condiciones de uso además de reconocer las disposiciones generales
+                                        establecidas en la ley 1581 de 2012 para la protección de datos personales.
+                                        <div class="valid-feedback">Aceptado.</div>
+                                        <div class="invalid-feedback">Marca esta casilla para continuar.</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-10">
+                            <button class="btn btn-success btn-block">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-center">¿Ya tienes una cuenta?
+                        <a href="/signin" style="color: #FD2221;">Inicia Sesión</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="slider-area2 slider-area3 slider-height2 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2><span style="color: #f52c2c;">| </span>Tus Denuncias</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center shadow-lg p-3 mb-5 bg-white rounded" style="border: none;">
+                <p> ¿Hay algo que quieras denunciar?</p>
+                <a href="/reportes/add-denuncias" class="genric-btn default circle"
+                    style="background-color: #f52c2c; color:white;">Hacer
+                    Denuncia</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {{#each denunciados}}
+        <div class="col-md-3">
+            <br>
+            <div class="card shadow p-2 mb-5 bg-white rounded" style="border: none !important;">
+                <div class="card-body ">
+                    <div class="text-center">
+                        <h3 class="card-title text-uppercase" style="color: #f52c2c;">
+                            {{	tipo_denuncia_reportes	}}
+                        </h3>
+                        <p class="m-2" style="color:#b3b3b3">{{timeago 	crated_at	}}</p>
+                    </div>
+                    <p class="m-2"><span style="color: #f52c2c">Evento: </span>{{evento_reportes}}.</p>
+                    <p class="m-2"><span style="color: #f52c2c">Lugar: </span>{{ubicacion_reportes}}.</p>
+                    <p class="m-2"><span style="color: #f52c2c">Descripción: </span>{{descripcion_reportes}}.</p>
+
+                    <!-- <a href="/reportes/delete/{{id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="/reportes/edit/{{id}}" class="btn btn-info">editar</a>-->
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </div>
+</div>

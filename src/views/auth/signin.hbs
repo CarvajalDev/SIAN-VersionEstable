@@ -1,0 +1,33 @@
+<div class="container mt-125">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header" style="background-color: #ffffff;">
+                    <h3>Iniciar sesión en SIAN</h3>
+                </div>
+                <div class="card-body">
+                    <img src="/img/SIAN_profile.png" alt="Logo Perfil" class="card-img-top mx-auto m-2 w-50">
+                    <form action="/signin" method="POST">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Iniciar Sesión
+                            </button>
+                        </div>
+                    </form>
+                    <p>Olvidé mi
+                        <a href="/forgot" style="color: #ff2121;">Contraseña</a>
+                    </p>
+                    <p>¿No tienes una cuenta?
+                        <a href="/signup" style="color: #ff2121;">Registrate</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

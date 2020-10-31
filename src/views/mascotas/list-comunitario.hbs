@@ -1,0 +1,51 @@
+<div class="slider-area2 slider-height2 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2><span style="color: #fecd32;">| </span>Padrinazgo comunitario <span
+                            class="flaticon-animal-kingdom"></span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+
+        {{#each mascotaComunitaria}}
+        <div class="col-md-3">
+            <div class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class="card-body">
+                    <a href="{{url}}">
+                        <h3 class="card-title text-uppercase">
+                            {{nombre_mascota}}
+                        </h3>
+                    </a>
+                    <img src="{{imagen_mascota}}" class="img-fluid" alt="foto de mascota">
+                    <p class="m-2"><span style="color: #f2b800;">{{padrinazgo_mascota}}</span></p>
+                    <p class="m-1" align="left"><span style="color: #f2b800;">Especie:</span> {{especie_mascota}}</p>
+                    <p class="m-1" align="left"><span style="color: #f2b800;">Raza:</span> {{raza_mascota}}</p>
+                    <p class="m-1" align="left"><span style="color: #f2b800;">Ubicación:</span> {{direccion_mascota}}
+                    </p>
+                    <p class="m-1" align="left"><span style="color: #f2b800;">Tamaño:</span> {{tamaño_mascota}} cm</p>
+                    <p class="m-1" align="left"><span style="color: #f2b800;">Microchip:</span> {{microchip_mascota}}
+                    </p>
+                    <!-- <p>{{timeago created_at}}</p> 
+                    <a href="mascotas/delete/{{id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="mascotas/edit/{{id}}" class="btn btn-info">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center shadow-lg p-3 mb-5 bg-white rounded"
+                style="border: none; !important">
+                <p>No tienes Mascotas agregadas aún ☹</p>
+                <a href="/mascotas/add" class="genric-btn default circle"
+                    style="background-color: #fecd32; color:white">¡Agrega Una!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
