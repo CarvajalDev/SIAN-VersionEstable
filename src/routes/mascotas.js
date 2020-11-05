@@ -44,16 +44,19 @@ router.post("/add", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     rasgos_mascota,
-    /*historia_clinica_mascota,
-    carta_mascota_peligrosa,*/
+    /*historia_clinica_mascota,*/
+    carta_mascota_peligrosa,
   } = req.body;
+
+
   const result = await cloudinary.v2.uploader.upload(
     req.files["imagen_mascota"][0].path
   );
 
   
-    /*const fileUpload = req.files["historia_clinica_mascota"][0].path;
-    const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;*/
+    /*const fileUpload = req.files["historia_clinica_mascota"][0].path;*/
+    const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;
+    console.log(fileUpload2);
  
 
   
@@ -71,8 +74,8 @@ router.post("/add", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     rasgos_mascota,
-    /*historia_clinica_mascota: fileUpload,
-    carta_mascota_peligrosa: fileUpload2,*/
+    /*historia_clinica_mascota: fileUpload,*/
+    carta_mascota_peligrosa: fileUpload2,
     user_id: req.user.id,
   };
 
