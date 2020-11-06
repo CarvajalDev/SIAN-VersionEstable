@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for=""><span style="color: red;">* </span>Dirección:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Dirección:</b></label>
                                 <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección" minlength="7" maxlength="30"
                                     required>
                             </div>
@@ -90,6 +90,13 @@
                             </div>
                         </div>
                         <div class="form-row mt-10">
+                                <div class="col-md-6">
+                                <label for=""><b>¿Tu mascota tiene rasgos especiales?:</b></label>
+                                <textarea type="text" class="form-control" name="rasgos_mascota"
+                                    placeholder="Describe los rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
+                                    rows="3" maxlength="60"></textarea>
+                                <p align="right"><i>Escribe hasta 60 caracteres</i></p>
+                            </div>
                             <div class="col-lg-6 col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Conforme el art. 7 de la ley 2054 de 2020. La raza de tu mascota es de:
                                     </b></label>
@@ -100,26 +107,26 @@
                                     <label>No es de Manejo Especial</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for=""><b>Describe los rasgos especiales:</b></label>
-                                <textarea type="text" class="form-control" name="rasgos_mascota"
-                                    placeholder="Rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
-                                    rows="5" maxlength="50"></textarea>
-                                <p align="right"><i>Escribe hasta 50 caracteres</i></p>
-                            </div>
                         </div>
 
                         <div class="form-row">
                             <div id="mostrarDetalle" class="col-lg-6 col-md-6">
-                                <label for=""><b>Adjuntar Compromiso Animales Peligrosos:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Compromiso Manejo Especial:</b></label>
+                                <p>Al poseer una mascota de manejo especial, debes descargar y diligenciar la <strong>Carta de Compromiso</strong> que obligatoriamente debes adjuntar.
                                 <a href="https://firebasestorage.googleapis.com/v0/b/sian-97abc.appspot.com/o/Carta%20de%20Compromiso%20Mascotas%20de%20Manejo%20Especial.docx?alt=media&token=207be197-039a-4aca-94e5-b524a13db0e6"
                                     download="Formato Denuncia Maltrato Animal.docx"
-                                    style="color: #1f2c7b; text-decoration: underline;"> Descargar Carta</a>
+                                    style="color: #1f2c7b; text-decoration: underline;">Descargar Carta</a></p>
                                 <input type="file" name="carta_mascota_peligrosa" class="genric-btn radius"
                                     id="archivoInput" aria-describedby="fileHelp" accept=".docx,application/msword">
                             </div>
-                            <div id="mostrarAsistencia"></div>
+                            <div id="mostrarVacunas" class="col-lg-6 col-md-6">
+                                    <label for=""><span style="color: red;"><strong>* </strong></span><b>Esquema de Vacunación (PNG, JPG, JPEG):</b></label>
+                                    <p>Al poseer una mascota de manejo especial, debes adjuntar su esquema de vacunación obligatoriamente</p>
+                                    <input type="file" name="vacunacion_mascota" class="genric-btn radius"
+                                        id="archivoInputVacunas" aria-describedby="fileHelp" accept="image/*" required>
+                            </div>    
                         </div>
+                         <div id="mostrarAsistencia"></div>
 
                        <div class="mt-5"> <span style="color: red;">* Campos Obligatorios</span></div>
  
@@ -147,18 +154,23 @@
 <script type="text/javascript">
   function mostrarDetalle() {
       document.getElementById("mostrarDetalle").style.display = 'block';
+      document.getElementById("mostrarVacunas").style.display = 'block';
       document.getElementById("mostrarAsistencia").style.display ='none';
       document.getElementById("asistencia").checked = false;
       document.getElementById("detalle").checked = true;
       document.getElementById("archivoInput").required = true;
+      document.getElementById("archivoInputVacunas").required = true;
+      
   }  
 
   function mostrarAsistencia() {
       document.getElementById("mostrarAsistencia").style.display ='block';
       document.getElementById("mostrarDetalle").style.display = 'none';
+      document.getElementById("mostrarVacunas").style.display = 'none';
       document.getElementById("asistencia").checked = true;
       document.getElementById("detalle").checked = false;
       document.getElementById("archivoInput").required = false;
+      document.getElementById("archivoInputVacunas").required = false;
   }
 
   mostrarAsistencia();
