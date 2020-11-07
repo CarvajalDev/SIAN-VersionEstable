@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10 mx-auto">
             <h2>| Actualiza los datos de tu Mascota</h2>
-            <div class="card mt-20">
+            <div class="card mt-30">
                 <div class="card-body">
                     <form action="/mascotas/edit/{{mascota.id}}" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
@@ -12,16 +12,23 @@
                                     required>
                             </div> -->
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4"><b>Nombre de tu Mascota:</b></label>
+                                <label for="inputEmail4"><span style="color: red;">* </span><b>Nombre de tu Mascota:</b></label>
                                 <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
                                     placeholder="Nombre" value="{{mascota.nombre_mascota}}" autofocus required>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for=""><span style="color: red;">* </span><b>Dirección:</b></label>
+                                <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
+                                    value="{{mascota.direccion_mascota}}" required>
+                            </div>
+
                         </div>
                         <div class="form-row">
                             <div class="col-lg-3 col-md-3">
-                                <label for=""><b>Tipo o Calidad de Titular:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Tipo o Calidad de Titular:</b></label>
                                 <div class="select-itms">
                                     <select name="padrinazgo_mascota" required>
+                                        <option value="{{mascota.padrinazgo_mascota}}">{{mascota.padrinazgo_mascota}}</option>
                                         <option value="Propietario">Propietario</option>
                                         <option value="Padrinazgo individual">Padrinazgo Individual</option>
                                         <option value="Padrinazgo comunitario">Padrinazgo Comunitario</option>
@@ -29,9 +36,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <label for=""><b>Tipo de Especie:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Tipo de Especie:</b></label>
                                 <div class="select-itms">
-                                    <select name="especie_mascota" required>
+                                    <select id="especie" onchange="razasLista()" name="especie_mascota" required>
+                                        <option value="{{mascota.especie_mascota}}">{{mascota.especie_mascota}}</option>
                                         <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}
                                         </option>
                                         <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}
@@ -49,50 +57,52 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><b>Otra Especie:</b></label>
-                                <input type="text" class="form-control" name="otra_especie" placeholder="Otra Especie"
+                                <input type="text" class="form-control" name="otra_especie" id="otraInput" placeholder="Otra Especie"
                                     value="{{mascota.otra_especie}}">
                             </div>
                             <div class="form-group col-lg-2 col-md-2">
-                                <label for=""><b>Tipo de Raza:</b></label>
-                                <div>
-                                    <select name="raza_mascota" required>
-
+                                <label for=""><span style="color: red;">* </span><b>Tipo de Raza:</b></label>
+                                <div id="raza">
+                                    <select required>
                                         <option value="{{mascota.raza_mascota}}">{{mascota.raza_mascota}}
                                         </option>
                                         <option value="Desconocida">No se conoce
                                         </option>
-                                        {{#each raza}}
+                                        <!--{{#each raza}}
                                         <option value="{{this}}">{{this}}</option>
-                                        {{/each}}
+                                        {{/each}}-->
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for=""><b>Dirección:</b></label>
-                                <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
-                                    value="{{mascota.direccion_mascota}}" required>
+                                <label for=""><span style="color: red;">* </span><b>Fecha de Nacimiento:</b></label>
+                                <input class="form-control" type="date" name="nacimiento_mascota" value="{{moment mascota.nacimiento_mascota format="YYYY-MM-DD"}}" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for=""><b>Fecha de Nacimiento:</b></label>
-                                <input class="form-control" type="date" name="nacimiento_mascota" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for=""><b>Tamaño de tu Mascota:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Tamaño de tu Mascota:</b></label>
                                 <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
                                     placeholder="Tamaño de mascota (cm)" value="{{mascota.tamaño_mascota}}" required>
                             </div>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for=""><b>Describe los rasgos especiales:</b></label>
+                                <textarea type="text" class="form-control" name="rasgos_mascota"
+                                    placeholder="Rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
+                                    rows="3" maxlength="60" required>{{mascota.rasgos_mascota}}</textarea>
+                                <p align="right"><i>Escribe hasta 60 caracteres</i></p>
+                            </div>
                             <div class="form-group col-md-6">
-                                <label for=""><b>Numero de Microchip:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Numero de Microchip:</b></label>
                                 <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
                                     placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" maxlength="10"
                                     required>
                             </div>
                         </div>
-                        <div class="form-row mt-10">
+                        <!--<div class="form-row mt-10">
                             <div class="col-lg-6 col-md-6">
                                 <label for=""><b>Conforme el art. 7 de la ley 2054 de 2020. Tu mascota es raza de:
                                     </b></label>
@@ -103,13 +113,7 @@
                                     <label>No es de Manejo Especial</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for=""><b>Describe los rasgos especiales:</b></label>
-                                <textarea type="text" class="form-control" name="rasgos_mascota"
-                                    placeholder="Rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
-                                    rows="5" maxlength="50" required>{{mascota.rasgos_mascota}}</textarea>
-                                <p align="right"><i>Escribe hasta 50 caracteres</i></p>
-                            </div>
+
                             <div class="form-row">
                                 <div class="col-lg-4 col-md-4">
                                     <label for=""><b>Historia Clínica de tu Mascota (PDF o DOC):</b></label>
@@ -133,7 +137,10 @@
                                         id="exampleInputFile" aria-describedby="fileHelp" accept="image/*" required>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
+
+                        <div class="mt-5"> <span style="color: red;">* Campos Obligatorios</span></div>
+
                         <div class="form-group mt-30">
                             <button class="btn btn-success btn-block">
                                 Actualizar Datos de Mi Mascota
@@ -145,3 +152,50 @@
         </div>
     </div>
 </div>
+
+<script>
+var otraInput = document.getElementById('otraInput');
+function bloqueado(){
+    otraInput.disabled = true;
+}
+bloqueado();
+
+
+function razasLista() {
+var tomaLista = document.getElementById('especie').value;
+
+if (tomaLista === "Canina") {
+otraInput.disabled = true;
+var array = ["Elegir Raza", "No se conoce", "Beagle", "Boxer", "Bulldog Frances", "Bulldog inglés", "Chihuahua", "Chow chow", "Cocker spaniel", "Criollo y/o Mestizo", "Frespuder", "Golden Retrevier", "Husky siberiano", "Labrador Retriver", "Pastor Aleman", "Perro salchicha", "Pinscher", "Poodle", "San Bernardo", "Schnauzer", "Shar pei", "Shih tzu", "Shorkie", "Yorshire Terrier", "American Staffordshire Terrier", "Bullmastiff", "Dóberman", "Dogo Argentino ó Gran danés", "Dogo de Burdeos", "Fila Brasileiro", "Mastín Napolitano", "Bull Terrier", "Pit Bull Terrier", "American Pit Bull Terrier", "de presa canario", "Rottweiler", "Staffordshire Terrier", "Tosa Japonés"];
+} else if (tomaLista === "Felino(a)") {
+otraInput.disabled = true;
+var array = ["Elegir Raza", "No se conoce", "siamés", "somalí", "Ragdoll", "Persa", "Maine Coon", "Común Europeo", "Ruso Azul", "Bobtail americano", "Siberiano", "Manés", "Birmano o Burmés"];
+} else if (tomaLista === "Caballo") {
+otraInput.disabled = true;
+var array = ["No se conoce"];
+} else if (tomaLista === "Burro") {
+otraInput.disabled = true;
+var array = ["No se conoce"];
+} else if (tomaLista === "Cabra") {
+otraInput.disabled = true;
+var array = ["No se conoce"];
+} else if (tomaLista === "Otra") {
+otraInput.disabled = false;
+var array = ["No se conoce"];
+}
+else {
+var array = [];
+}
+
+var string = " ";
+for (i = 0; i < array.length; i++) {
+ary = array[i];
+//string = string + "<option value=" + array[i] + ">" + array[i] + "</option>";
+string = `${string} <option value="${ary}"> ${ary} </option>`;
+}
+
+string = "<select name='raza_mascota'>" + string + "</select>";
+
+document.getElementById('raza').innerHTML = string;
+}
+</script>

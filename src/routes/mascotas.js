@@ -13,6 +13,9 @@ const fs = require("fs-extra");
 const dbPool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
+const helpers = require('handlebars-helpers');
+const moment = helpers.date();
+
 router.get("/add", isLoggedIn, async (req, res) => {
   const especies = await dbPool.query("SELECT * FROM especies");
   const razas = await dbPool.query("SELECT nombre_raza FROM razas");
@@ -117,6 +120,7 @@ router.get("/edit/:id", isLoggedIn, async (req, res) => {
   const nombreRazas = razas.map((elegir) => {
     return elegir.nombre_raza;
   });
+
   res.render("mascotas/edit", {
     mascota: mascotas[0],
     raza: nombreRazas,

@@ -17,6 +17,7 @@ const { dirname } = require("path");
 
 var favicon = require("serve-favicon");
 
+
 //inicializar
 const app = express();
 require("./lib/passport");
