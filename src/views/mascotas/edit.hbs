@@ -14,12 +14,12 @@
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4"><span style="color: red;">* </span><b>Nombre de tu Mascota:</b></label>
                                 <input type="text" id="myminNombre" class="form-control" name="nombre_mascota"
-                                    placeholder="Nombre" value="{{mascota.nombre_mascota}}" autofocus required>
+                                    placeholder="Nombre" value="{{mascota.nombre_mascota}}" minlength="3" maxlength="30" autofocus required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Dirección:</b></label>
                                 <input type="text" class="form-control" name="direccion_mascota" placeholder="dirección"
-                                    value="{{mascota.direccion_mascota}}" required>
+                                    value="{{mascota.direccion_mascota}}" minlength="7" maxlength="30" required>
                             </div>
 
                         </div>
@@ -63,8 +63,8 @@
                             <div class="form-group col-lg-2 col-md-2">
                                 <label for=""><span style="color: red;">* </span><b>Tipo de Raza:</b></label>
                                 <div id="raza">
-                                    <select required>
-                                        <option value="{{mascota.raza_mascota}}">{{mascota.raza_mascota}}
+                                    <select name='raza_mascota' required>
+                                        <option value="{{mascota.raza_mascota}}" selected>{{mascota.raza_mascota}}
                                         </option>
                                         <option value="Desconocida">No se conoce
                                         </option>
@@ -83,23 +83,23 @@
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Tamaño de tu Mascota:</b></label>
                                 <input type="text" id="solonumeros" class="form-control" name="tamaño_mascota"
-                                    placeholder="Tamaño de mascota (cm)" value="{{mascota.tamaño_mascota}}" required>
+                                    placeholder="Tamaño de mascota (cm)" value="{{mascota.tamaño_mascota}}" minlength="5" maxlength="10" required>
                             </div>
 
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for=""><b>Describe los rasgos especiales:</b></label>
+                                <label for=""><b>¿Tu mascota tiene rasgos especiales?:</b></label>
                                 <textarea type="text" class="form-control" name="rasgos_mascota"
                                     placeholder="Rasgos físicos tales como cicatrices, marcas, amputaciones parciales, etc..."
-                                    rows="3" maxlength="60" required>{{mascota.rasgos_mascota}}</textarea>
+                                    rows="3" maxlength="60" rows="3" maxlength="60">{{mascota.rasgos_mascota}}</textarea>
                                 <p align="right"><i>Escribe hasta 60 caracteres</i></p>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Numero de Microchip:</b></label>
                                 <input type="text" id="numerochip" class="form-control" name="microchip_mascota"
-                                    placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" maxlength="10"
-                                    required>
+                                    placeholder="Numero de chip" value="{{mascota.microchip_mascota}}" maxlength="10" minlength="5" maxlength="12"
+                                    >
                             </div>
                         </div>
                         <!--<div class="form-row mt-10">

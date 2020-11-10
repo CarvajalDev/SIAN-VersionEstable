@@ -136,7 +136,7 @@ router.get("/edit/:id", isLoggedIn, async (req, res) => {
 router.post("/edit/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const {
-    imagen_mascota,
+    //imagen_mascota,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
@@ -147,22 +147,22 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     rasgos_mascota,
-    historia_clinica_mascota,
-    carta_mascota_peligrosa,
-    vacunacion_mascota,
+    //historia_clinica_mascota,
+    //carta_mascota_peligrosa,
+    //vacunacion_mascota,
   } = req.body;
 
-  const result = await cloudinary.v2.uploader.upload(
+  /*const result = await cloudinary.v2.uploader.upload(
     req.files["imagen_mascota"][0].path
   );
   const result2 = await cloudinary.v2.uploader.upload(
     req.files["vacunacion_mascota"][0].path
   );
   const fileUpload = req.files["historia_clinica_mascota"][0].path;
-  const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;
+  const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;*/
 
   const newMascota = {
-    imagen_mascota: result.url,
+   // imagen_mascota: result.url,
     nombre_mascota,
     padrinazgo_mascota,
     direccion_mascota,
@@ -173,16 +173,16 @@ router.post("/edit/:id", isLoggedIn, async (req, res) => {
     tamaño_mascota,
     microchip_mascota,
     rasgos_mascota,
-    historia_clinica_mascota: fileUpload,
-    carta_mascota_peligrosa: fileUpload2,
-    vacunacion_mascota: result2.url,
+    //historia_clinica_mascota: fileUpload,
+    //carta_mascota_peligrosa: fileUpload2,
+    //vacunacion_mascota: result2.url,
   };
   await dbPool.query("UPDATE mascotas set ? WHERE id = ?", [newMascota, id]);
 
-  await fs.unlink(req.files["imagen_mascota"][0].path);
+ /* await fs.unlink(req.files["imagen_mascota"][0].path);
   await fs.unlink(req.files["historia_clinica_mascota"][0].path);
   await fs.unlink(req.files["carta_mascota_peligrosa"][0].path);
-  await fs.unlink(req.files["vacunacion_mascota"][0].path);
+  await fs.unlink(req.files["vacunacion_mascota"][0].path);*/
 
   req.flash("success", "Mascota editada correctamente");
   res.redirect("/mascotas");
