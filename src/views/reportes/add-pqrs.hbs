@@ -1,11 +1,12 @@
 <div class="container mt-100 ">
     <div class="row">
         <div class="col-md-7 mx-auto">
-            <div class="card">
+             <h2>| Envia un Pregunta, Queja o Reclamo</h2>
+            <div class="card mt-30">
                 <div class="card-body">
                     <form action="/reportes//add-pqrs" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <p>PQRS - Es la posibilidad de hacer una petición, queja o reclamo. Ejemplo: Solicitar mayor
+                            <p><strong>PQRS:</strong> Es la posibilidad de hacer una petición, queja o reclamo. Ejemplo: Solicitar mayor
                                 presencia de la
                                 policia de inspección y vigilancia en parques donde propietarios llevan a sus mascotas y
                                 no recogen excretas. Solicitud de charlas, capacitaciones, esterilizaciones, omisiones
@@ -16,7 +17,7 @@
                             <div class="col-lg-4 col-md-4">
                                 <label for=""><b>Tipo de reporte:</b></label>
                                 <div class="select-itms">
-                                    <select name="tipo_denuncia_reportes" required>
+                                    <select name="tipo_denuncia_reportes" disabled="true" required>
                                         <option value="PQRS" selected>PQRS
                                         </option>
                                         <!--<option value="Denuncia">Denuncia
@@ -24,19 +25,25 @@
                                         <option value="Reporte" selected>Reporte
                                         </option> -->
                                     </select>
+                                    <div style="display: none;">
+                                        <select name="tipo_denuncia_reportes" required>
+                                            <option value="PQRS" selected></option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for=""><b>Dirección:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Dirección:</b></label>
                                 <input type="text" class="form-control" name="ubicacion_reportes"
-                                    placeholder="Proporcionanos tu ubicación" required>
+                                    placeholder="Proporcionanos tu ubicación" minlength="7" maxlength="30" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <label for=""><b>Escribe tu duda queja o reclamo:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Escribe tu duda, queja o reclamo:</b></label>
                                 <textarea type="text" class="form-control" name="descripcion_reportes"
-                                    placeholder="Descripción" rows="5" required></textarea>
+                                    placeholder="Escribenos una pregunta, queja o reclamo" rows="5" minlength="10" maxlength="413" required></textarea>
+                                    <p align="right"><i>Escribe hasta 400 caracteres</i></p>
                             </div>
                             <div class="form-group col-md-6">
                                 <!-- <label for=""><b>Adjuntar Evidencia:</b></label>
@@ -47,11 +54,12 @@
                                 </div>-->
                             </div>
                         </div>
-                        <strong style="color: red;">Al dar click en "Enviar PQR" este será publicado y no
+                        <div> <span style="color: red;">* Campos Obligatorios</span></div>
+                        <p class="mt-5" style="color: red;">Al dar click en "Enviar PQR" este será publicado y no
                             podrá ser editado o
-                            eliminado. Por favor asegúrese de que todo lo registrado sea verídico.</strong>
+                            eliminado. Por favor asegúrese de que todo lo registrado sea verídico.</p>
                         <div class="form-group mt-10">
-                            <button class="btn btn-success btn-block">Enviar PQR</button>
+                            <button class="btn btn-success btn-block">Enviar PQRS</button>
                         </div>
                     </form>
                 </div>
