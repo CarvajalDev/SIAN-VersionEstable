@@ -212,4 +212,10 @@ router.get("/razas-peligrosas", isLoggedIn, async (req, res) => {
   res.render("mascotas/list-peligrosas", { razasPeligrosas });
 });
 
+router.get("/salud/:id", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+ 
+  res.render("mascotas/salud", {  });
+});
+
 module.exports = router;

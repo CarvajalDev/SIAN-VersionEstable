@@ -1,0 +1,188 @@
+<div class="container mt-50 ">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="card">
+                <!-- JUMBOTRON -->
+                
+                    <div class="jumbotron jumbotron-fluid text-center jumbotron-image" style="background-image: url(https://www.caspercollege.edu/wp-content/uploads/2019/08/casper-college-pre-veterinary-program.jpg);">
+                        <div class="container">
+                            <h1 class="display-4">
+                               <b><i class="fas fa-briefcase-medical"></i> Salud</b>
+                            </h1>
+                            <p class="lead">
+                               <b style="color: black;">Responde las preguntas y carga los documentos de tu mascota</b> 
+                            </p>
+                        </div>
+                    </div>
+
+
+                <div class="card-body">
+                    <form action="/upload/subida/{{usuario.id}}" method="POST" enctype="multipart/form-data">
+                    <!-- PREGUNTAS -->
+                        <div class="form-row mt-10">
+                            <div class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b>¿Posees la Historia Clínica de tu mascota?:
+                                    </b></label>
+                                <div class="select-itms">
+                                    <input id="detalle" type="radio" name="historia-----clinica" value="si"  onclick="mostrarDetalle()" required>
+                                    <label>Sí</label><br>
+                                    <input id="asistencia" type="radio" name="historia-----clinica" value="no" onclick="mostrarAsistencia()" required>
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        <div class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b>¿Posees el Esquema de Vacunación de tu mascota?:
+                                    </b></label>
+                                <div class="select-itms">
+                                    <input id="detalle2" type="radio" name="vacunacion______mascota" value="si" onclick="mostrarDetalle2()" required>
+                                    <label>Sí</label><br>
+                                    <input id="asistencia2" type="radio" name="vacunacion______mascota" value="no" onclick="mostrarAsistencia2()" required>
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        <div class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b>Conforme el art. 7 de la ley 2054 de 2020. La raza de tu mascota es de:
+                                    </b></label>
+                                <div class="select-itms">
+                                    <input id="detalle3" type="radio" name="peligrosa_mascota" value="si" onclick="mostrarDetalle3()" required>
+                                    <label>Manejo o Cuidado Especial (peligrosa)</label><br>
+                                    <input id="asistencia3" type="radio" name="peligrosa_mascota" value="no" onclick="mostrarAsistencia3()" required>
+                                    <label>No es de Manejo Especial</label>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- CARGA DE ARCHIVOS -->
+                        <div class="form-row mt-20">
+                            <div id="mostrarDetalle" class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b> Historia Clinica de tu Mascota (PDF o DOC):</b></label>
+                                <p style="font-size: smaller;">A continuación, debes cargar la <strong>Historia Clínica</strong> de tu mascota.</p>
+                                <input type="file" name="historia_clinica_mascota" class="genric-btn radius"
+                                    id="" aria-describedby="fileHelp"
+                                    accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                            </div> 
+                            <div class="col-lg-4 col-md-4" id="mostrarAsistencia">
+                                <label><span style="color: red;">* </span><b>¿Por qué no tienes la Historia Clínica de tu mascota?</b></label>
+                                <input type="text" name="detalle_historia_clinica" class="form-control" placeholder="Escribenos tu respuesta..." required>
+                            </div>
+
+
+                            <div id="mostrarDetalle2" class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b>Esquema de Vacunación (PNG, JPG, JPEG):</b></label>
+                                <p style="font-size: smaller;">A continuación, debes cargar el <strong>Esquema de Vacunación</strong> de tu mascota.</p>
+                                <input type="file" name="vacunacion_mascota" class="genric-btn radius"
+                                    id="" aria-describedby="fileHelp" accept="image/*" required>
+                            </div>
+                            <div class="col-lg-4 col-md-4" id="mostrarAsistencia2">
+                                <label><span style="color: red;">* </span><b>¿Por qué no tienes el Esquema de Vacunación de tu mascota?</b></label>
+                                <input type="text" name="detalle_historia_clinica" class="form-control" placeholder="Escribenos tu respuesta..." required>
+                            </div>
+
+
+                            <div id="mostrarDetalle3" class="col-lg-4 col-md-4">
+                                <label for=""><span style="color: red;">* </span><b>Compromiso Manejo Especial:</b></label>
+                                <p style="font-size: smaller;">Al poseer una mascota de manejo especial, debes descargar y diligenciar la <strong>Carta de Compromiso</strong> que obligatoriamente debes adjuntar.
+                                <a href="https://firebasestorage.googleapis.com/v0/b/sian-97abc.appspot.com/o/Carta%20de%20Compromiso%20Mascotas%20de%20Manejo%20Especial.docx?alt=media&token=207be197-039a-4aca-94e5-b524a13db0e6"
+                                    download="Formato Denuncia Maltrato Animal.docx"
+                                    style="color: #1f2c7b; text-decoration: underline;">Descargar Carta</a></p>
+                                <input type="file" name="carta_mascota_peligrosa" class="genric-btn radius"
+                                    id="archivoInput" aria-describedby="fileHelp" accept=".docx,application/msword">
+                            </div>
+                            <div id="mostrarAsistencia3" ></div>
+                        </div>
+                        
+                         <div class="mt-5"> <span style="color: red;">* Campos Obligatorios</span></div>
+
+                        <div class="form-group mt-30">
+                            <button class="btn btn-success btn-block">Guardar datos de Salud</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  function mostrarDetalle() {
+      document.getElementById("mostrarDetalle").style.display = 'block';
+      document.getElementById("mostrarAsistencia").style.display ='none';
+      document.getElementById("asistencia").checked = false;
+      document.getElementById("detalle").checked = true;
+      //document.getElementById("archivoInput").required = true;
+      //document.getElementById("archivoInputVacunas").required = true;
+      
+  }  
+
+  function mostrarAsistencia() {
+      document.getElementById("mostrarAsistencia").style.display ='block';
+      document.getElementById("mostrarDetalle").style.display = 'none';
+      document.getElementById("asistencia").checked = true;
+      document.getElementById("detalle").checked = false;
+      //document.getElementById("archivoInput").required = false;
+      //document.getElementById("archivoInputVacunas").required = false;
+  }
+
+ // mostrarAsistencia();
+ function primeraCarga(){
+      document.getElementById("mostrarAsistencia").style.display ='none';
+      document.getElementById("mostrarDetalle").style.display = 'none';
+      document.getElementById("asistencia").checked = false;
+ }
+ primeraCarga();
+</script> 
+
+<script type="text/javascript">
+  function mostrarDetalle2() {
+      document.getElementById("mostrarDetalle2").style.display = 'block';
+      document.getElementById("mostrarAsistencia2").style.display ='none';
+      document.getElementById("asistencia2").checked = false;
+      document.getElementById("detalle2").checked = true;
+      //document.getElementById("archivoInput").required = true;
+      //document.getElementById("archivoInputVacunas").required = true;
+      
+  }  
+
+  function mostrarAsistencia2() {
+      document.getElementById("mostrarAsistencia2").style.display ='block';
+      document.getElementById("mostrarDetalle2").style.display = 'none';
+      document.getElementById("asistencia2").checked = true;
+      document.getElementById("detalle2").checked = false;
+      //document.getElementById("archivoInput").required = false;
+      //document.getElementById("archivoInputVacunas").required = false;
+  }
+
+ function primeraCarga2(){
+      document.getElementById("mostrarAsistencia2").style.display ='none';
+      document.getElementById("mostrarDetalle2").style.display = 'none';
+      document.getElementById("asistencia2").checked = false;
+ }
+ primeraCarga2();
+</script> 
+
+<script type="text/javascript">
+  function mostrarDetalle3() {
+      document.getElementById("mostrarDetalle3").style.display = 'block';
+      document.getElementById("mostrarAsistencia3").style.display ='none';
+      document.getElementById("asistencia3").checked = false;
+      document.getElementById("detalle3").checked = true;
+      //document.getElementById("archivoInput").required = true;
+      //document.getElementById("archivoInputVacunas").required = true;
+      
+  }  
+
+  function mostrarAsistencia3() {
+      document.getElementById("mostrarAsistencia3").style.display ='block';
+      document.getElementById("mostrarDetalle3").style.display = 'none';
+      document.getElementById("asistencia3").checked = true;
+      document.getElementById("detalle3").checked = false;
+      //document.getElementById("archivoInput").required = false;
+      //document.getElementById("archivoInputVacunas").required = false;
+  }
+
+ function primeraCarga3(){
+      document.getElementById("mostrarAsistencia3").style.display ='none';
+      document.getElementById("mostrarDetalle3").style.display = 'none';
+      document.getElementById("asistencia3").checked = false;
+ }
+ primeraCarga3();
+</script>

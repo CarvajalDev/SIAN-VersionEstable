@@ -4793,22 +4793,22 @@ del {
 }
 .genric-btn.success {
   color: #fff;
-  background: #4cd3e3;
+  background: #8495e3;
   border: 1px solid transparent;
 }
 .genric-btn.success:hover {
-  color: #4cd3e3;
-  border: 1px solid #4cd3e3;
+  color: #8495e3;
+  border: 1px solid #8495e3;
   background: #fff;
 }
 .genric-btn.success-border {
-  color: #4cd3e3;
-  border: 1px solid #4cd3e3;
+  color: #8495e3;
+  border: 1px solid #8495e3;
   background: #fff;
 }
 .genric-btn.success-border:hover {
   color: #fff;
-  background: #4cd3e3;
+  background: #8495e3;
   border: 1px solid transparent;
 }
 .genric-btn.info {
@@ -5296,7 +5296,7 @@ del {
   left: 19px;
 }
 .confirm-switch input:checked + label:before {
-  background: #4cd3e3;
+  background: #8495e3;
 }
 .primary-checkbox {
   width: 16px;
@@ -5624,3 +5624,11 @@ del {
 .switch-wrap {
   margin-bottom: 10px;
 }
+
+
+.jumbotron-image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
