@@ -56,14 +56,30 @@ router.post("/add", isLoggedIn, async (req, res) => {
   const result = await cloudinary.v2.uploader.upload(
     req.files["imagen_mascota"][0].path
   );
-  const result2 = await cloudinary.v2.uploader.upload(
-    req.files["vacunacion_mascota"][0].path
-  );
-
   
+
+  try{
+    var result2 = req.files["vacunacion_mascota"][0].path;
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+    }else{
+      throw err;
+    }
+  }
+  
+  try{
+    var fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+    }else{
+      throw err;
+    }
+  }   
+
     /*const fileUpload = req.files["historia_clinica_mascota"][0].path;*/
-    const fileUpload2 = req.files["carta_mascota_peligrosa"][0].path;
-    console.log(fileUpload2);
+  
 
   const newMascota = {
     imagen_mascota: result.url,
@@ -80,7 +96,7 @@ router.post("/add", isLoggedIn, async (req, res) => {
     rasgos_mascota,
     /*historia_clinica_mascota: fileUpload,*/
     carta_mascota_peligrosa: fileUpload2,
-    vacunacion_mascota: result2.url,
+    vacunacion_mascota: result2,
     user_id: req.user.id,
   };
 
@@ -89,7 +105,6 @@ router.post("/add", isLoggedIn, async (req, res) => {
   await fs.unlink(req.files["imagen_mascota"][0].path);
   //await fs.unlink(req.files["historia_clinica_mascota"][0].path);
   //await fs.unlink(req.files["carta_mascota_peligrosa"][0].path);
-  await fs.unlink(req.files["vacunacion_mascota"][0].path);
 
   req.flash("success", "mascota guardada correctamente");
   res.redirect("/mascotas");
@@ -214,8 +229,81 @@ router.get("/razas-peligrosas", isLoggedIn, async (req, res) => {
 
 router.get("/salud/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
+  const mascotas = await dbPool.query("SELECT * FROM mascotas WHERE id = ?", [
+    id,
+  ]);
  
-  res.render("mascotas/salud", {  });
+  res.render("mascotas/salud", { mascota: mascotas[0] });
 });
+
+router.post("/salud/:id", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+
+  const {
+    tiene_historia_clinica,
+    historia_clinica_mascota,
+    detalle_historia_clinica,
+    tiene_vacunacion_mascota,
+    vacunacion_mascota,
+    detalle_vacunacion_mascota,
+    //peligrosa_mascota,
+    //carta_mascota_peligrosa,
+  } = req.body;
+
+    try{
+      var fileUploadHistoria = req.files["historia_clinica_mascota"][0].path;
+    } catch(err) {
+      if( err instanceof TypeError){
+        console.error('CUSTOM ERROR:', err);
+      } else {
+        throw err;
+      }  
+    }
+    
+
+    try{
+      var fileUploadVacuna = req.files["vacunacion_mascota"][0].path;
+    } catch(err){
+      if(err instanceof TypeError){
+        console.error(err);
+      }else{
+        throw err;
+      }
+    }
+    
+
+   
+    
+  /*if(carta_mascota_peligrosa){
+    const fileUploadCartaComp = req.files["carta_mascota_peligrosa"][0].path;
+    return fileUploadCartaComp;
+  }else {
+    fileUploadCartaComp = "no";
+  }*/
+
+  
+
+  const newMascota = {
+    tiene_historia_clinica,
+    historia_clinica_mascota: fileUploadHistoria,
+    detalle_historia_clinica,
+    tiene_vacunacion_mascota,
+    vacunacion_mascota: fileUploadVacuna,
+    detalle_vacunacion_mascota,
+    //peligrosa_mascota,
+    //carta_mascota_peligrosa: fileUploadCartaComp,
+   };
+
+   await dbPool.query("UPDATE mascotas set ? WHERE id = ?", [newMascota, id]);
+
+   if(vacunacion_mascota){
+    await fs.unlink(req.files["vacunacion_mascota"][0].path);
+  }
+
+   req.flash("success", "Datos de salud guardados");
+   res.redirect("/mascotas");
+});
+
+
 
 module.exports = router;
