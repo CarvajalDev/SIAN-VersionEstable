@@ -7,12 +7,12 @@
                     <form action="/busca/add-extraviado" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-lg-4 col-md-4">
-                                <label for=""><b>Foto de Mascota Extraviada:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Foto de Mascota Extraviada:</b></label>
                                 <input class="genric-btn radius" type="file" name="foto_seBusca" accept="image/*"
                                     required>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <label for=""><b>Tipo de Busqueda:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Tipo de Busqueda:</b></label>
                                 <div class="form-group">
                                     <select name="tipo_seBusca" required>
                                         <option value="Animales Extraviados">Animales Extraviados
@@ -25,52 +25,69 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <label for=""><b>Raza de tu Mascota:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Raza de tu Mascota:</b></label>
                                 <div class="form-group">
-                                    <select name="raza_seBusca" required>
-                                        <option value="desconocida">No se conoce
-                                        </option>
-                                        {{#each raza}}
-                                        <option value="{{this}}">{{this}}</option>
-                                        {{/each}}
-                                    </select>
+                                <input type="text" id="otraInput" class="form-control" name="raza_seBusca" placeholder="Escribe la raza" autofocus>
+                                    <div id="desaparecerSelect"> 
+                                        <select id="raza" onchange="razasLista()" name="raza_seBusca" required>
+                                            <option value="desconocida">No se conoce</option>
+                                            <option value="Otra">Otra</option>
+                                            <option value="siamés">siamés</option>
+                                            <option value="somalí">somalí</option>
+                                            <option value="Ragdoll">Ragdoll</option>
+                                            <option value="Persa">Persa</option>
+                                            <option value="Maine Coon">Maine Coon</option>
+                                            <option value="Común Europeo">Común Europeo</option>
+                                            <option value="Ruso Azul">Ruso Azul</option>
+                                            <option value="Bobtail americano">Bobtail americano</option>
+                                            <option value="Siberiano">Siberiano</option>
+                                            <option value="Manés">Manés</option>
+                                            <option value="Birmano o Burmés">Birmano o Burmés</option>
+                                            {{#each raza}}
+                                            <option value="{{this}}">{{this}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2">
-                                <label for=""><b>Edad de la Mascota:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Edad de Mascota:</b></label>
                                 <input type="text" id="solonumeros" class="form-control" name="edad_seBusca"
-                                    placeholder="Edad" autofocus required>
+                                    placeholder="Edad" minlength="1" maxlength="3" required>
                             </div>
                         </div>
                         <div class="form-row mt-10 ">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4"><b>Nombre:</b></label>
+                                <label for="inputEmail4"><span style="color: red;"><strong>* </strong></span><b>Nombre:</b></label>
                                 <input type="text" id="myminNombre" class="form-control" name="nombre_seBusca"
-                                    placeholder="Nombre de la Mascota Extraviada" required>
+                                    placeholder="Nombre de la Mascota Extraviada" minlength="3" maxlength="30" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for=""><b>Lugar Donde se Extravió:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Lugar Donde se Extravió:</b></label>
                                 <input type="text" class="form-control" name="ubicacion_seBusca"
-                                    placeholder="Lugar donde se vió la ultima vez" required>
+                                    placeholder="Lugar donde se vió la ultima vez" minlength="7" maxlength="30" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for=""><b>Características Físicas:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Características Físicas:</b></label>
                                 <textarea type="text" class="form-control" rows="4" name="caracteristica_seBusca"
-                                    placeholder="Caracteristicas Fisicas de la Mascota" maxlength="100"
+                                    placeholder="Caracteristicas Fisicas de la Mascota" minlength="7"  maxlength="100"
                                     required></textarea>
                                 <p align="right"><i>Escribe hasta 100 caracteres</i></p>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><b>Número de Contacto (Fijo o Celular):</b></label>
                                 <input type="text" id="telefono" class="form-control" name="telefono_seBusca"
-                                    placeholder="Teléfono">
+                                    placeholder="Teléfono" minlength="7" maxlength="13" >
                                 <label for=""><b>¿Ofreces recompensa? En caso de mascota extraviada:</b></label>
                                 <input type="text" id="recompensa" class="form-control" name="recompensa_seBusca"
-                                    placeholder="$200.000">
+                                    placeholder="$200.000" minlength="4" maxlength="7">
                             </div>
                         </div>
+
+                        <div class="mt-5"> <span style="color: red;">* Campos Obligatorios</span></div>
+
                         <div class="form-group mt-30">
                             <button class="btn btn-success btn-block">
                                 Publicar Mascota Extraviada
@@ -82,3 +99,28 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+var otraInput = document.getElementById('otraInput');
+var desaparecerSelect = document.getElementById('desaparecerSelect');
+
+    function otra(){
+    otraInput.style.display ='none';
+    otraInput.disabled="true";
+}
+otra();
+function razasLista() {
+
+    var tomaLista = document.getElementById('raza').value;
+    if (tomaLista === "Otra") {
+        otraInput.style.display ='block';
+        desaparecerSelect.style.display ='none';
+        document.getElementById('raza').disabled="true";
+        otraInput.removeAttribute('disabled');
+        
+    }
+
+}
+
+</script>

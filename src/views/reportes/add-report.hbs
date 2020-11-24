@@ -4,7 +4,7 @@
             <h2>| Crea un Reporte</h2>
             <div class="card mt-30">
                 <div class="card-body">
-                    <form action="/reportes/add-reportes" method="POST" enctype="multipart/form-data">
+                    <form id="myform" action="/reportes/add-reportes" method="POST" enctype="multipart/form-data" onsubmit="return enviar();">
                         <div class="form-row">
                             <div class="col-lg-2 col-md-2">
                                 <label for=""><b>Tipo de reporte:</b></label>
@@ -55,6 +55,15 @@
                                 <p align="right"><i>Escribe hasta 200 caracteres</i></p>
                             </div>
                             <div class="form-group col-md-6">
+                                <label for=""><span style="color: red;">* </span><b>Adjuntar Registro Fotografico (PNG, JPEG, JPG):</b></label>
+                                <div>
+                                    <p style="font-size: smaller;">Debes subir<strong> 3 imágenes</strong> como soporte.</p>
+                                </div>
+                                <input type="file" class="genric-btn radius mt-10" multiple="true" accept="image/*"
+                                    name="evidencia_reportes" multiple required>           
+                                <p style="font-size: smaller;"><strong>Para cargar los 3 archivos debes presionar tecla "ctrl" y seleccionarlos.</strong></p>                   
+                            </div>
+                            <div class="form-group col-md-6">
                                 <!-- <label for=""><b>Adjuntar Evidencia:</b></label>
                                 <input class="genric-btn radius" type="file" multiple="true" accept="image/*"
                                     name="evidencia_reportes">
@@ -76,3 +85,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+    $("button").click(function(){
+        var formulario = document.getElementById("myform");
+        var dato = formulario[0];
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>3){
+            alert("Debes subir 3 archivos de evidencia");
+            return false;
+        } else if (parseInt($fileUpload.get(0).files.length)<3){
+            alert("Debes subir 3 archivos de evidencia");
+            return false;
+        }else{
+            formulario.submit();
+            return true;
+        }
+    });    
+});
+</script>

@@ -1,3 +1,11 @@
+<script>
+
+    var arreglo = {{{arrayFrontend}}};
+
+   console.log(arreglo);
+
+</script>
+
 <div class="slider-area2 slider-area4 slider-height2 d-flex align-items-center">
     <div class="container">
         <div class="row">
@@ -25,7 +33,95 @@
     </div>
 
     <div class="row">
+        <div class="col-md-12">
+            <label><b>Filtrar Por:</b></label>
+            <div class="form-group">                      
+                <div> 
+                    <select id="filtro" onchange="filtrarMascotas()">
+                        <option value="todas">Todas las Publicaciones</option>
+                        <option value="extraviados">Animales Extraviados</option>
+                        <option value="hurtados">Animales Hurtados</option>
+                        <option value="hallados">Animales Hallados</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="todosAnimales" class="row">
         {{#each buscaPublico}}
+        <div class="col-md-3">
+            <br>
+            <div   class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase" style="color: #12a654;; font-weight: bold;">
+                        Se Busca
+                    </h3>
+                    <img src="{{foto_seBusca}}" class="img-fluid" alt="foto de mascota">
+                    <p align="center" style="color: #12a654;">{{tipo_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Nombre:</span> {{nombre_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Raza:</span> {{raza_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Edad:</span> {{edad_seBusca}} años</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Visto en:</span>
+                        {{ubicacion_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Caracteristicas:</span>
+                        {{caracteristica_seBusca}}
+                    </p>
+                    <br>
+                    <!-- <p>{{timeago created_at}}</p> -->
+                    <!--<a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
+                    <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        <br>
+
+        {{else}}
+        <div class="col-md-12">
+            <div class="text-center"><p>No hay resultados disponibles.</p></div>
+        </div>
+        {{/each}}
+
+    </div>
+
+    <div id="todosHurtados" class="row">
+        {{#each buscaHurtados}}
+        <div class="col-md-3">
+            <br>
+            <div  class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase" style="color: #12a654;; font-weight: bold;">
+                        Se Busca
+                    </h3>
+                    <img src="{{foto_seBusca}}" class="img-fluid" alt="foto de mascota">
+                    <p align="center" style="color: #12a654;">{{tipo_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Nombre:</span> {{nombre_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Raza:</span> {{raza_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Edad:</span> {{edad_seBusca}} años</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Visto en:</span>
+                        {{ubicacion_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Caracteristicas:</span>
+                        {{caracteristica_seBusca}}
+                    </p>
+                    <br>
+                    <!-- <p>{{timeago created_at}}</p> -->
+                    <!--<a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
+                    <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        <br>
+
+        {{else}}
+        <div class="col-md-12">
+            <div class="text-center"><p>No hay resultados disponibles.</p></div>
+        </div>
+        {{/each}}
+
+    </div>
+
+    <div id="todosHallados" class="row">
+        {{#each buscaHallados}}
         <div class="col-md-3">
             <br>
             <div class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
@@ -51,8 +147,95 @@
             </div>
         </div>
         <br>
-        {{else}}
 
+        {{else}}
+        <div class="col-md-12">
+            <div class="text-center"><p>No hay resultados disponibles.</p></div>
+        </div>
         {{/each}}
+
+    </div>
+     
+    <div id="todosExtraviados" class="row">
+        {{#each buscaExtraviados}}
+        <div class="col-md-3">
+            <br>
+            <div  class="card text-center shadow p-2 mb-5 bg-white rounded" style="border: none; !important">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase" style="color: #12a654;; font-weight: bold;">
+                        Se Busca
+                    </h3>
+                    <img src="{{foto_seBusca}}" class="img-fluid" alt="foto de mascota">
+                    <p align="center" style="color: #12a654;">{{tipo_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Nombre:</span> {{nombre_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Raza:</span> {{raza_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Edad:</span> {{edad_seBusca}} años</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Visto en:</span>
+                        {{ubicacion_seBusca}}</p>
+                    <p class="m-1" align="left"><span style="color: #12a654;">Caracteristicas:</span>
+                        {{caracteristica_seBusca}}
+                    </p>
+                    <br>
+                    <!-- <p>{{timeago created_at}}</p> -->
+                    <!--<a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>-->
+                    <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        <br>
+
+        {{else}}
+        <div class="col-md-12">
+            <div class="text-center"><p>No hay resultados disponibles.</p></div>
+        </div>
+        {{/each}}
+
     </div>
 </div>
+
+<script type="text/javascript">
+
+    var todas = document.getElementById('todosAnimales');
+    var extraviados = document.getElementById('todosExtraviados');
+    var hurtados = document.getElementById('todosHurtados');
+    var hallados = document.getElementById('todosHallados');
+
+
+  function otra(){
+        todas.style.display = 'flex';
+        extraviados.style.display = 'none';
+        hurtados.style.display = 'none';
+        hallados.style.display = 'none';   
+    }
+    otra();
+ 
+ 
+    function filtrarMascotas() {
+
+        var filtro = document.getElementById('filtro').value;
+
+        if(filtro === "todas"){
+            todas.style.display = 'flex';
+            extraviados.style.display = 'none';
+            hurtados.style.display = 'none';
+            hallados.style.display = 'none';
+        }else if (filtro === "extraviados") {
+            extraviados.style.display = 'flex';
+            hurtados.style.display = 'none';
+            hallados.style.display = 'none';
+            todas.style.display = 'none';
+        }else if (filtro === "hurtados"){
+            hurtados.style.display = 'flex';
+            hallados.style.display = 'none';
+            todas.style.display = 'none';
+            extraviados.style.display = 'none';
+        }else if (filtro === "hallados"){
+            hallados.style.display = 'flex';
+            todas.style.display = 'none';
+            extraviados.style.display = 'none';
+            hurtados.style.display = 'none';
+        }
+
+    }
+
+</script>

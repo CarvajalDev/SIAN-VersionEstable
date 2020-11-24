@@ -1,3 +1,58 @@
+<style>
+    .modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #fff);
+	background: -webkit-linear-gradient(#fff, #fff);
+	background: -o-linear-gradient(#fff, #fff);
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background: #000;
+	color: #ffffff;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #12a654;
+	-webkit-box-shadow: 1px 1px 3px #12a654;
+	box-shadow: 1px 1px 3px #12a654;
+}
+.close:hover { background: #12a654; }*/
+</style>
+
 <div class="slider-area2 slider-area4 slider-height2 d-flex align-items-center">
     <div class="container">
         <div class="row">
@@ -48,8 +103,17 @@
                     </p>
                     <br>
                     <!-- <p>{{timeago created_at}}</p> -->
-                    <a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a>
+                    <a href="#openModal"  class="genric-btn danger-border">Eliminar</a>
+                 <!-- ESTE ES EL BUENO   <a href="/busca/delete/{{id}}" class="genric-btn danger-border">Eliminar</a> -->
                     <!--<a href="mascotas/edit/{{id}}" class="genric-btn primary">Editar</a>-->
+                        <div id="openModal" class="modalDialog">
+                            <div class="text-center">
+                                <a href="#close" title="Close" class="close">X</a>
+                                <h1>¡Mascota Encontrada!</h1>
+                                <p class="mt-4">Si estás buscando eliminar la publicación de tu Mascota Extraviada, nos estás confirmando que esta encontró su hogar.</p>
+                                <a href="/busca/delete/{{id}}" class="genric-btn danger-border">Encontró su hogar</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

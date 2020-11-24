@@ -4,7 +4,7 @@
             <h2>| Crea una Denuncia</h2>
             <div class="card mt-30">
                 <div class="card-body">
-                    <form action="/reportes/add-denuncias" method="POST" enctype="multipart/form-data">
+                    <form id="myform" action="/reportes/add-denuncias" method="POST" enctype="multipart/form-data" onsubmit="return enviar();">
                         <div class="form-row">
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><b>Tipo de reporte:</b></label>
@@ -53,13 +53,13 @@
 
                         <div class="form-row mt-10">
                             <div class="form-group col-md-6">
-                                <label for=""><span style="color: red;">* </span><b>Adjuntar Evidencia (PNG, JPEG, JPG, PDF):</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Adjuntar Evidencia (PNG, JPEG, JPG):</b></label>
                                 <div>
-                                    <p style="font-size: smaller;">Subir
-                                        obligatoriamente <strong>4 archivos</strong> como evidencia.</p>
+                                    <p style="font-size: smaller;">Debes subir<strong> 4 imágenes</strong> como evidencia.</p>
                                 </div>
-                                <input class="genric-btn radius mt-10" type="file" multiple="true" accept="image/*"
-                                    name="evidencia_reportes" required>                             
+                                <input type="file" class="genric-btn radius mt-10" multiple="true" accept="image/*"
+                                    name="evidencia_reportes" multiple required>
+                                <p style="font-size: smaller;"><strong>Para cargar los 4 archivos debes presionar tecla "ctrl" y seleccionarlos.</strong></p>                             
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Adjuntar Formato de Denuncia:</b></label>
@@ -88,7 +88,7 @@
                             podrá ser editada o
                             eliminada. Por favor asegúrese de que todo lo registrado sea verídico.</p>
                         <div class="form-group mt-10">
-                            <button class="btn btn-success btn-block">Enviar Denuncia</button>
+                            <button id="enviarFormulario" class="btn btn-success btn-block">Enviar Denuncia</button>
                         </div>
                     </form>
                 </div>
@@ -96,3 +96,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+    $("button").click(function(){
+        var formulario = document.getElementById("myform");
+        var dato = formulario[0];
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>4){
+            alert("Debes subir 4 archivos de evidencia");
+            return false;
+        } else if (parseInt($fileUpload.get(0).files.length)<4){
+            alert("Debes subir 4 archivos de evidencia");
+            return false;
+        }else{
+            formulario.submit();
+            return true;
+        }
+    });    
+});
+</script>

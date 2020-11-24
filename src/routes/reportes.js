@@ -27,12 +27,24 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     tipo_denuncia_reportes,
     descripcion_reportes,
     evento_reportes,
+    evidencia_reportes,
   } = req.body;
+
+  var result1 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][0].path);
+
+  var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][1].path);
+
+  var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][2].path);
+
+  var imagesURl = [result1.url, result2.url, result3.url];
+
+    var imgToBD = imagesURl.toString();
 
   const newReporte = {
     ubicacion_reportes,
     tipo_denuncia_reportes,
     descripcion_reportes,
+    evidencia_reportes: imgToBD,
     user_id: req.user.id,
     evento_reportes,
   };
@@ -51,9 +63,10 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
-      \n *Evento:${newReporte.evento_reportes} 
-      \n *Lugar:${newReporte.ubicacion_reportes}
+      \n *Evento: ${newReporte.evento_reportes} 
+      \n *Lugar: ${newReporte.ubicacion_reportes}
       \n *Descripcion: ${newReporte.descripcion_reportes}
+      \n *Evidencias: ${imagesURl[0]}, ${imagesURl[1]}, ${imagesURl[2]}
       \n
       \n
       \n
@@ -138,25 +151,39 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     evento_reportes,
     evidencia_formato,
   } = req.body;
-  const result1 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][0].path
-  );
-  const result2 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][1].path
-  );
-  const result3 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][2].path
-  );
-  const result4 = await cloudinary.v2.uploader.upload(
-    req.files["evidencia_reportes"][3].path
-  );
 
-  const imagesURl = [result1.url, result2.url, result3.url, result4.url];
-  const imgToBD = imagesURl.toString();
+ 
+  try{
+    
+    var result1 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][0].path);
 
-  const fileUpload = await req.files["evidencia_formato"][0].path;
+    var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][1].path);
 
-  const newReporte = {
+    var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][2].path);
+
+    var result4 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][3].path);
+
+    if(result1.url === undefined){
+      result1['url']  = "Sin Evidencia";
+     }else if(result2.url === undefined){
+      result2['url']  = "Sin Evidencia";
+     }else if(result3.url === undefined){
+      result3['url']  = "Sin Evidencia";
+     }else if(result4.url === undefined){
+      result4['url']  = "Sin Evidencia";
+     }
+
+
+    var imagesURl = [result1.url, result2.url, result3.url, result4.url];
+     console.log(imagesURl[2]);
+
+    var imgToBD = imagesURl.toString();
+
+
+  
+  var fileUpload = await req.files["evidencia_formato"][0].path;
+
+  var newReporte = {
     evidencia_reportes: imgToBD,
     ubicacion_reportes,
     tipo_denuncia_reportes,
@@ -167,40 +194,41 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   };
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
-  const transporter = nodemailer.createTransport({
+  var transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
       user: "sianneiva@gmail.com",
       pass: "sianneiva123",
     },
   });
-  const mailOptions = {
-    from: "sianneiva@gmail.com",
-    to: "h_carvajal@outlook.es",
-    subject: "Notificacion | Reportes ",
-    attachments: [{filename: 'denuncia.docx',
-    path: `${fileUpload}` }],
-    text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
-      \n Evento: ${newReporte.evento_reportes} 
-      \n Lugar: ${newReporte.ubicacion_reportes}
-      \n Descripcion: ${newReporte.descripcion_reportes}
-      \n Evidencias: ${result1.url}, ${result2.url}, ${result3.url}, ${result4.url}
-      \n 
-      \n
-      \n
-      \n
-      Este es un mensaje automático, evite responder a este correo.`,
-  };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send(500, error.message);
-    } else {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
+    var mailOptions = {
+      from: "sianneiva@gmail.com",
+      to: "h_carvajal@outlook.es",
+      subject: "Notificacion | Reportes ",
+      attachments: [{filename: 'denuncia.docx',
+      path: `${fileUpload}` }],
+      text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
+        \n Evento: ${newReporte.evento_reportes} 
+        \n Lugar: ${newReporte.ubicacion_reportes}
+        \n Descripcion: ${newReporte.descripcion_reportes}
+        \n Evidencias: ${imagesURl[0]}, ${imagesURl[1]}, ${imagesURl[2]}, ${imagesURl[3]}
+        \n 
+        \n
+        \n
+        \n
+        Este es un mensaje automático, evite responder a este correo.`,
+    };
+  
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.send(500, error.message);
+      } else {
+        console.log("Email sent");
+        res.status(200).jsonp(req.body);
+      }
+    });
 
  // await fs.unlink(req.files["evidencia_reportes"][0].path);
  // await fs.unlink(req.files["evidencia_reportes"][1].path);
@@ -210,6 +238,16 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
 
   req.flash("success", "Denuncia enviada correctamente");
   res.redirect("/reportes");
+
+  } catch(err){
+    if(err){
+      console.error(err);
+    }else{
+      throw err;
+    }
+  }
+
+   
 });
 
 router.get("/list-denunciados", isLoggedIn, async (req, res) => {

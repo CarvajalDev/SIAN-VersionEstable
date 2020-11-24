@@ -16,6 +16,7 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     {{!--font awesome--}}
     <script src="https://kit.fontawesome.com/15f0574ac3.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {{!--estilos propios--}}
     <link rel="stylesheet" href="/css/style.css">
 
@@ -58,8 +59,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
     <script>
-        bootstrapValidate('#myminNombre', 'min:3:Escriba al menos 3 letras');
-        bootstrapValidate('#myminApellido', 'min:4:Escriba al menos 4 letras');
+        bootstrapValidate('#myminNombre', 'alpha:30:Solo puede escribir letras');
+        bootstrapValidate('#myminApellido', 'alpha:30:Solo puede escribir letras');
         bootstrapValidate('#email', 'email:Escriba una dirección de correo valida');
         bootstrapValidate('#mypassword', 'matches:#passwordConfirm:Tus contraseñas no coinciden');
         bootstrapValidate('#myint', 'integer:Complete este campo con un número entero');

@@ -94,7 +94,7 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
     }
   });
 
-  req.flash("success", "La mascota extraviada ha sido publica");
+  req.flash("success", "Mascota extraviada publicada");
   res.redirect("/busca");
 });
 
@@ -131,7 +131,11 @@ router.get("/list-hurtado", isLoggedIn, async (req, res) => {
 
 router.get("/list-publico", async (req, res) => {
   const buscaPublico = await pool.query("SELECT * FROM busquedas");
-  res.render("seBusca/list-publico", { buscaPublico });
+  const buscaHurtados = await pool.query("SELECT * FROM busquedas WHERE tipo_seBusca = 'Animales Hurtados'");
+  const buscaExtraviados = await pool.query("SELECT * FROM busquedas WHERE tipo_seBusca = 'Animales Extraviados'");
+  const buscaHallados = await pool.query("SELECT * FROM busquedas WHERE tipo_seBusca = 'Animales Hallados'");
+  const arrayFrontend = JSON.stringify(buscaPublico);
+  res.render("seBusca/list-publico", { buscaPublico, buscaHurtados, buscaExtraviados, buscaHallados, arrayFrontend });
 });
 
 module.exports = router;
