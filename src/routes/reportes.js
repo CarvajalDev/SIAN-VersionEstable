@@ -28,23 +28,100 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
     descripcion_reportes,
     evento_reportes,
     evidencia_reportes,
+    evidencia_reportes2,
+    evidencia_reportes3,
+    evidencia_reportes4,
+    evidencia_reportes5,
   } = req.body;
 
-  var result1 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][0].path);
+  try{
+    var result1 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
 
-  var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][1].path);
+      result1 = {
+        url: 'Evidencia 1: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
 
-  var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][2].path);
 
-  var imagesURl = [result1.url, result2.url, result3.url];
+  try{
+    var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes2"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
 
-    var imgToBD = imagesURl.toString();
+      result2 = {
+        url: 'Evidencia 2: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
+
+
+  try{
+    var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes3"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+
+      result3 = {
+        url: 'Evidencia 3: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
+
+
+  try{
+    var result4 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes4"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+
+      result4 = {
+        url: 'Evidencia 4: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
+
+
+  try{
+    var result5 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes5"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+
+      result5 = {
+        url: 'Evidencia 1: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
 
   const newReporte = {
     ubicacion_reportes,
     tipo_denuncia_reportes,
     descripcion_reportes,
-    evidencia_reportes: imgToBD,
+    evidencia_reportes: result1.url,
+    evidencia_reportes2: result2.url,
+    evidencia_reportes3: result3.url,
+    evidencia_reportes4: result4.url,
+    evidencia_reportes5: result5.url,
     user_id: req.user.id,
     evento_reportes,
   };
@@ -66,7 +143,7 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
       \n *Evento: ${newReporte.evento_reportes} 
       \n *Lugar: ${newReporte.ubicacion_reportes}
       \n *Descripcion: ${newReporte.descripcion_reportes}
-      \n *Evidencias: ${imagesURl[0]}, ${imagesURl[1]}, ${imagesURl[2]}
+      \n *Evidencias: ${result1.url}, ${result2.url}, ${result3.url}, ${result4.url}, ${result5.url}
       \n
       \n
       \n
@@ -142,9 +219,14 @@ router.get("/list-reportados", isLoggedIn, async (req, res) => {
 router.get("/add-denuncias", isLoggedIn, (req, res) => {
   res.render("reportes/add-denun");
 });
+
 router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   const {
     evidencia_reportes,
+    evidencia_reportes2,
+    evidencia_reportes3,
+    evidencia_reportes4,
+    evidencia_reportes5,
     ubicacion_reportes,
     tipo_denuncia_reportes,
     descripcion_reportes,
@@ -152,55 +234,106 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     evidencia_formato,
   } = req.body;
 
- 
   try{
-    
     var result1 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
 
-    var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][1].path);
-
-    var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][2].path);
-
-    var result4 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes"][3].path);
-
-    if(result1.url === undefined){
-      result1['url']  = "Sin Evidencia";
-     }else if(result2.url === undefined){
-      result2['url']  = "Sin Evidencia";
-     }else if(result3.url === undefined){
-      result3['url']  = "Sin Evidencia";
-     }else if(result4.url === undefined){
-      result4['url']  = "Sin Evidencia";
-     }
+      result1 = {
+        url: 'Evidencia 1: Sin evidencia',
+      };
+ 
+    }else{
+      throw err;
+    }
+  }
 
 
-    var imagesURl = [result1.url, result2.url, result3.url, result4.url];
-     console.log(imagesURl[2]);
+  try{
+    var result2 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes2"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+      result2 = {
+        url: 'Evidencia 2: Sin evidencia',
+      };
+    }else{
+      throw err;
+    }
+  }
 
-    var imgToBD = imagesURl.toString();
+
+  try{
+    var result3 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes3"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+      result3 = {
+        url: 'Evidencia 3: Sin evidencia',
+      };
+    }else{
+      throw err;
+    }
+  }
 
 
+  try{
+    var result4 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes4"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+      result4 = {
+        url: 'Evidencia 4: Sin evidencia',
+      };
+    }else{
+      throw err;
+    }
+  }
+
+
+  try{
+    var result5 = await cloudinary.v2.uploader.upload(req.files["evidencia_reportes5"][0].path);
+  } catch(err){
+    if(err instanceof TypeError){
+      console.error(err);
+      result5 = {
+        url: 'Evidencia 5: Sin evidencia',
+      };
+    }else{
+      throw err;
+    }
+  }
+
+    //var imagesURl = [result1.url, result2.url, result3.url];
+    // console.log(imagesURl[2]);
+
+    //var imgToBD = imagesURl.toString();
   
-  var fileUpload = await req.files["evidencia_formato"][0].path;
+    var fileUpload = await req.files["evidencia_formato"][0].path;
 
-  var newReporte = {
-    evidencia_reportes: imgToBD,
-    ubicacion_reportes,
-    tipo_denuncia_reportes,
-    descripcion_reportes,
-    evento_reportes,
-    evidencia_formato: fileUpload,
-    user_id: req.user.id,
-  };
-  await pool.query("INSERT INTO reportes set ?", [newReporte]);
+    var newReporte = {
+      evidencia_reportes: result1.url,
+      evidencia_reportes2: result2.url,
+      evidencia_reportes3: result3.url,
+      evidencia_reportes4: result4.url,
+      evidencia_reportes5: result5.url,
+      ubicacion_reportes,
+      tipo_denuncia_reportes,
+      descripcion_reportes,
+      evento_reportes,
+      evidencia_formato: fileUpload,
+      user_id: req.user.id,
+    };
+    await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
-  var transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: "sianneiva@gmail.com",
-      pass: "sianneiva123",
-    },
-  });
+    var transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: "sianneiva@gmail.com",
+        pass: "sianneiva123",
+      },
+    });
 
     var mailOptions = {
       from: "sianneiva@gmail.com",
@@ -212,7 +345,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
         \n Evento: ${newReporte.evento_reportes} 
         \n Lugar: ${newReporte.ubicacion_reportes}
         \n Descripcion: ${newReporte.descripcion_reportes}
-        \n Evidencias: ${imagesURl[0]}, ${imagesURl[1]}, ${imagesURl[2]}, ${imagesURl[3]}
+        \n Evidencias: ${result1.url}, ${result2.url}, ${result3.url}, ${result4.url}, ${result5.url}
         \n 
         \n
         \n
@@ -239,15 +372,6 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
   req.flash("success", "Denuncia enviada correctamente");
   res.redirect("/reportes");
 
-  } catch(err){
-    if(err){
-      console.error(err);
-    }else{
-      throw err;
-    }
-  }
-
-   
 });
 
 router.get("/list-denunciados", isLoggedIn, async (req, res) => {

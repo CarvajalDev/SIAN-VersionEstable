@@ -1,10 +1,41 @@
+<style>
+    .organizar{
+        display: inline-block;
+    }
+    .file-upload{
+	height:60px;
+	width:60px;
+	margin:0px;
+    border:1px solid #111;
+    border-radius:8px;
+	overflow:hidden;
+	position:relative;
+    }
+    .file-upload input{
+        position:absolute;
+        height:250px;
+        width:545px;
+        left:-200px;
+        top:-200px;
+        background:transparent;
+        opacity:0;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);  
+    }
+    .file-upload img{
+        height:50px;
+        width:50px;
+        margin:4px;
+    }
+</style>
+
 <div class="container mt-80">
     <div class="row">
         <div class="col-md-10 mx-auto">
             <h2>| Crea un Reporte</h2>
             <div class="card mt-30">
                 <div class="card-body">
-                    <form id="myform" action="/reportes/add-reportes" method="POST" enctype="multipart/form-data" onsubmit="return enviar();">
+                    <form id="myform" action="/reportes/add-reportes" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-lg-2 col-md-2">
                                 <label for=""><b>Tipo de reporte:</b></label>
@@ -49,7 +80,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for=""><span style="color: red;">* </span><b>Describen tu Reporte:</b></label>
+                                <label for=""><span style="color: red;">* </span><b>Describe tu Reporte:</b></label>
                                 <textarea type="text" class="form-control" name="descripcion_reportes"
                                     placeholder="Descripción" rows="5" minlength="7" maxlength="200" required></textarea>
                                 <p align="right"><i>Escribe hasta 200 caracteres</i></p>
@@ -57,11 +88,45 @@
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>Adjuntar Registro Fotografico (PNG, JPEG, JPG):</b></label>
                                 <div>
-                                    <p style="font-size: smaller;">Debes subir<strong> 3 imágenes</strong> como soporte.</p>
+                                    <p style="font-size: smaller;"><strong>Puedes subir hasta 5 imágenes como soporte.</strong></p>
                                 </div>
-                                <input type="file" class="genric-btn radius mt-10" multiple="true" accept="image/*"
-                                    name="evidencia_reportes" multiple required>           
-                                <p style="font-size: smaller;"><strong>Para cargar los 3 archivos debes presionar tecla "ctrl" y seleccionarlos.</strong></p>                   
+
+                                        <div class="file-upload organizar">
+            
+                                            <img class="miniatura" src="/../img/Upload-Photo.png" />
+                                            
+                                            <input id="evidencia" class="mt-10" type="file" name="evidencia_reportes"  accept="image/*" required>
+
+                                        </div>
+                                        <div class="file-upload organizar">
+            
+                                            <img class="miniatura2" src="/../img/Upload-Photo.png" />
+                                            
+                                            <input id="evidencia2" class="mt-10" type="file" name="evidencia_reportes2"  accept="image/*">
+
+                                        </div>
+                                        <div class="file-upload organizar">
+            
+                                            <img class="miniatura3" src="/../img/Upload-Photo.png" />
+                                            
+                                            <input id="evidencia3" class="mt-10" type="file" name="evidencia_reportes3"  accept="image/*">
+
+                                        </div>
+                                        <div class="file-upload organizar">
+            
+                                            <img class="miniatura4" src="/../img/Upload-Photo.png" />
+                                            
+                                            <input id="evidencia4" class="mt-10" type="file" name="evidencia_reportes4"  accept="image/*">
+
+                                        </div>
+                                        <div class="file-upload organizar">
+            
+                                            <img class="miniatura5" src="/../img/Upload-Photo.png" />
+                                            
+                                            <input id="evidencia5" class="mt-10" type="file" name="evidencia_reportes5"  accept="image/*">
+
+                                        </div>          
+                                                
                             </div>
                             <div class="form-group col-md-6">
                                 <!-- <label for=""><b>Adjuntar Evidencia:</b></label>
@@ -87,21 +152,61 @@
 </div>
 
 <script>
-    $(function(){
-    $("button").click(function(){
-        var formulario = document.getElementById("myform");
-        var dato = formulario[0];
-        var $fileUpload = $("input[type='file']");
-        if (parseInt($fileUpload.get(0).files.length)>3){
-            alert("Debes subir 3 archivos de evidencia");
-            return false;
-        } else if (parseInt($fileUpload.get(0).files.length)<3){
-            alert("Debes subir 3 archivos de evidencia");
-            return false;
-        }else{
-            formulario.submit();
-            return true;
+
+        const fileInput = document.getElementById('evidencia');
+        const fileInput2 = document.getElementById('evidencia2');
+        const fileInput3 = document.getElementById('evidencia3');
+        const fileInput4 = document.getElementById('evidencia4');
+        const fileInput5 = document.getElementById('evidencia5');
+        const img = document.querySelector('.miniatura');
+        const img2 = document.querySelector('.miniatura2');
+        const img3 = document.querySelector('.miniatura3');
+        const img4 = document.querySelector('.miniatura4');
+        const img5 = document.querySelector('.miniatura5');
+
+        fileInput.onchange = () => {
+
+            const file = fileInput.files[0];
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+                URL.revokeObjectURL(img.src);
+            }
         }
-    });    
-});
+
+        fileInput2.onchange = () => {
+
+            const file = fileInput2.files[0];
+            img2.src = URL.createObjectURL(file);
+            img2.onload = () => {
+                URL.revokeObjectURL(img2.src);
+            }
+        }
+
+        fileInput3.onchange = () => {
+
+            const file = fileInput3.files[0];
+            img3.src = URL.createObjectURL(file);
+            img3.onload = () => {
+                URL.revokeObjectURL(img3.src);
+            }
+        }
+
+        fileInput4.onchange = () => {
+
+            const file = fileInput4.files[0];
+            img4.src = URL.createObjectURL(file);
+            img4.onload = () => {
+                URL.revokeObjectURL(img4.src);
+            }
+        }
+
+        fileInput5.onchange = () => {
+
+            const file = fileInput5.files[0];
+            img5.src = URL.createObjectURL(file);
+            img5.onload = () => {
+                URL.revokeObjectURL(img5.src);
+            }
+        }
+
 </script>

@@ -41,6 +41,51 @@ router.get("/profile", isLoggedIn, async (req, res) => {
   res.render("profile");
 });
 
+router.get("/edit-profile/:id", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+  const usuarios = await pool.query("SELECT * FROM users WHERE id = ?", [
+    id,
+  ]);
+  res.render("edit-profile", {usuario: usuarios[0]});
+});
+
+router.post("/edit-profile/:id", isLoggedIn, async (req, res) => {
+  const { id } = req.params;
+  const {
+    nombre,
+    apellido,
+    telefono,
+    email,
+    tipo_documento,
+    documento,
+    municipio,
+    direccion,
+    barrio,
+    comuna,
+    tipo_usuario,
+  } = req.body;
+
+  const newUsuario = {
+    nombre,
+    apellido,
+    telefono,
+    email,
+    tipo_documento,
+    documento,
+    municipio,
+    direccion,
+    barrio,
+    comuna,
+    tipo_usuario,
+   };
+
+   await pool.query("UPDATE users set ? WHERE id = ?", [newUsuario, id]);
+
+   req.flash("success", "Datos actualizados correctamente");
+   res.redirect("/profile");
+
+});
+
 router.get("/logout", isLoggedIn, (req, res) => {
   req.logOut();
   res.redirect("/signin");

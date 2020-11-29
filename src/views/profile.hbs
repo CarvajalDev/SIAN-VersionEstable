@@ -79,6 +79,7 @@
                                 <p class="text-muted font-size-sm">{{user.municipio}}, Comuna {{user.comuna}},
                                     {{user.Barrio}}</p>
                             </div>
+                            <br>
                             <button class="btn btn-outline-primary"><a href="/logout">Cerrar Sesión</a></button>
                         </div>
                     </div>
@@ -94,6 +95,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card mb-3 shadow p-3 mb-5 bg-white rounded" style="border: none;">
+                    <span class="text-right" style="font-size: small;" ><a href="/edit-profile/{{user.id}}" style="color: #1f2b7b;"><i class="fas fa-pen" style="color: #1f2b7b;"></i><u> Editar</u></a></span>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
