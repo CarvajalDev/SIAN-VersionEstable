@@ -27,11 +27,11 @@
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><span style="color: red;"><strong>* </strong></span><b>Raza de tu Mascota:</b></label>
                                 <div class="form-group">
-                                <input type="text" id="otraInput" class="form-control" name="raza_seBusca" placeholder="Escribe la raza" autofocus>
+                                    <input type="text" id="otraInput" class="form-control" name="raza_seBusca" placeholder="Escribe la raza" autofocus>
                                     <div id="desaparecerSelect"> 
                                         <select id="raza" onchange="razasLista()" name="raza_seBusca" required>
+                                            <option value="">Elegir Raza</option>
                                             <option value="desconocida">No se conoce</option>
-                                            <option value="Otra">Otra</option>
                                             <option value="siamés">siamés</option>
                                             <option value="somalí">somalí</option>
                                             <option value="Ragdoll">Ragdoll</option>
@@ -46,14 +46,15 @@
                                             {{#each raza}}
                                             <option value="{{this}}">{{this}}</option>
                                             {{/each}}
+                                            <option value="Otra">Otra</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2">
                                 <label for=""><span style="color: red;"><strong>* </strong></span><b>Edad de Mascota:</b></label>
-                                <input type="text" id="solonumeros" class="form-control" name="edad_seBusca"
-                                    placeholder="Edad" minlength="1" maxlength="3" required>
+                                <input type="text" id="edadMascotaVali" class="form-control" name="edad_seBusca"
+                                    placeholder="2 años" minlength="4" maxlength="8" required>
                             </div>
                         </div>
                         <div class="form-row mt-10 ">
