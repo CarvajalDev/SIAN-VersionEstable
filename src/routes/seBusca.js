@@ -60,15 +60,17 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
   await fs.unlink(req.files["foto_seBusca"][0].path);
 
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: 'smtp.hostinger.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: "sianneiva@gmail.com",
-      pass: "sianneiva123",
+      user: "notificaciones@sian.asoayudame.org",
+      pass: "Sian2020",
     },
   });
 
   const mailOptions = {
-    from: "sianneiva@gmail.com",
+    from: "notificaciones@sian.asoayudame.org",
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguiente ${newBusqueda.tipo_seBusca}: 

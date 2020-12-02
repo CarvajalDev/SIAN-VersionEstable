@@ -129,14 +129,17 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: 'smtp.hostinger.com',
+    port: 587,
+    secure: false,
+    //service: "Gmail",
     auth: {
-      user: "sianneiva@gmail.com",
-      pass: "sianneiva123",
+      user: "notificaciones@sian.asoayudame.org",
+      pass: "Sian2020",
     },
   });
   const mailOptions = {
-    from: "sianneiva@gmail.com",
+    from: "notificaciones@sian.asoayudame.org",
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
@@ -328,15 +331,17 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
     await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
     var transporter = nodemailer.createTransport({
-      service: "Gmail",
+      host: 'smtp.hostinger.com',
+      port: 587,
+      secure: false,
       auth: {
-        user: "sianneiva@gmail.com",
-        pass: "sianneiva123",
+        user: "notificaciones@sian.asoayudame.org",
+        pass: "Sian2020",
       },
     });
 
     var mailOptions = {
-      from: "sianneiva@gmail.com",
+      from: "notificaciones@sian.asoayudame.org",
       to: "h_carvajal@outlook.es",
       subject: "Notificacion | Reportes ",
       attachments: [{filename: 'denuncia.docx',
@@ -404,14 +409,16 @@ router.post("/add-pqrs", isLoggedIn, async (req, res) => {
   await pool.query("INSERT INTO reportes set ?", [newReporte]);
 
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: 'smtp.hostinger.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: "sianneiva@gmail.com",
-      pass: "sianneiva123",
+      user: "notificaciones@sian.asoayudame.org",
+      pass: "Sian2020",
     },
   });
   const mailOptions = {
-    from: "sianneiva@gmail.com",
+    from: "notificaciones@sian.asoayudame.org",
     to: "h_carvajal@outlook.es",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 

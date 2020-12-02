@@ -129,15 +129,17 @@ router.post("/forgot", async (req, res) => {
     ]);
 
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      host: 'smtp.hostinger.com',
+      port: 587,
+      secure: false,
       auth: {
-        user: "sianneiva@gmail.com",
-        pass: "sianneiva123",
+        user: "notificaciones@sian.asoayudame.org",
+        pass: "Sian2020",
       },
     });
 
     const mailOptions = {
-      from: "sianneiva@gmail.com",
+      from: "notificaciones@sian.asoayudame.org",
       to: `${newEmail}`,
       subject: "Recuperación de Contraseña | SIAN ",
       html: `<P>Tu pediste la recuperación de contraseña:</p>

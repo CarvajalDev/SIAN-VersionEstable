@@ -78,15 +78,17 @@ passport.use(
       newUser.id = result.insertId;
 
       const transporter = nodemailer.createTransport({
-        service: "Gmail",
+        host: 'smtp.hostinger.com',
+        port: 587,
+        secure: false,
         auth: {
-          user: "sianneiva@gmail.com",
-          pass: "sianneiva123",
+          user: "notificaciones@sian.asoayudame.org",
+          pass: "Sian2020",
         },
       });
 
       const mailOptions = {
-        from: "sianneiva@gmail.com",
+        from: "notificaciones@sian.asoayudame.org",
         to: "h_carvajal@outlook.es",
         subject: "Notificacion | Reportes ",
         text: `Este es un mensaje automático, evite responder a este correo.`,
