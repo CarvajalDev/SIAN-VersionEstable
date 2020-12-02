@@ -59,8 +59,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
     <script>
-        bootstrapValidate('#myminNombre', 'alpha:30:Solo puede escribir letras');
-        bootstrapValidate('#myminApellido', 'alpha:30:Solo puede escribir letras');
+        bootstrapValidate('#myminNombre', 'regex:[a-zA-Z\s]+$:El Nombre solo debe incluir letras');
+        bootstrapValidate('#myminApellido', 'regex:[a-zA-Z\s]+$:Tu Apellido solo debe incluir letras');
         bootstrapValidate('#email', 'email:Escriba una dirección de correo valida');
         bootstrapValidate('#mypassword', 'matches:#passwordConfirm:Tus contraseñas no coinciden');
         bootstrapValidate('#myint', 'integer:Complete este campo con un número entero');
