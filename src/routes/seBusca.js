@@ -71,7 +71,7 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
 
   const mailOptions = {
     from: "notificaciones@sian.asoayudame.org",
-    to: "h_carvajal@outlook.es",
+    to: "denuncias@sian.asoayudame.org",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguiente ${newBusqueda.tipo_seBusca}: 
       \n 

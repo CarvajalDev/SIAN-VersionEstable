@@ -9,17 +9,18 @@
                     <form action="/reset/{{allToken}}" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4"><b>Nueva Contraseña:</b></label>
-                                <input type="password" id="passwordConfirm" name="password"
+                                <label for="inputEmail4"><span style="color: red;">* </span><b>Nueva Contraseña:</b></label>
+                                <input type="password" id="passwordResetToo" name="password"
                                     placeholder="Contraseña Nueva" class="form-control" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Tu contraseña debe contener al menos un número y una letra mayúscula. Mínimo 8 caracteres" required>
                                 <small style="font-weight: 500;">Contraseña debe tener un número, una letra mayúscula y mínimo 8 caracteres</small>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4"><b>Repetir Contraseña:</b></label>
-                                <input type="password" id="mypassword" placeholder="Repetir Contraseña Nueva"
+                                <label for="inputPassword4"><span style="color: red;">* </span><b>Repetir Contraseña:</b></label>
+                                <input type="password" id="passwordReset" placeholder="Repetir Contraseña Nueva"
                                     class="form-control" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Tu contraseña debe contener al menos un número y una letra mayúscula. Mínimo 8 caracteres" required>
                             </div>
                         </div>
+                        <span style="color: red;">* Campos Obligatorios</span>
                         <div class="form-group mt-30">
                             <button class="btn btn-success btn-block">
                                 Solicitar Cambio de Contraseña

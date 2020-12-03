@@ -140,7 +140,7 @@ router.post("/add-reportes", isLoggedIn, async (req, res) => {
   });
   const mailOptions = {
     from: "notificaciones@sian.asoayudame.org",
-    to: "h_carvajal@outlook.es",
+    to: "denuncias@sian.asoayudame.org",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
       \n *Evento: ${newReporte.evento_reportes} 
@@ -342,7 +342,7 @@ router.post("/add-denuncias", isLoggedIn, async (req, res) => {
 
     var mailOptions = {
       from: "notificaciones@sian.asoayudame.org",
-      to: "h_carvajal@outlook.es",
+      to: "denuncias@sian.asoayudame.org",
       subject: "Notificacion | Reportes ",
       attachments: [{filename: 'denuncia.docx',
       path: `${fileUpload}` }],
@@ -419,7 +419,7 @@ router.post("/add-pqrs", isLoggedIn, async (req, res) => {
   });
   const mailOptions = {
     from: "notificaciones@sian.asoayudame.org",
-    to: "h_carvajal@outlook.es",
+    to: "denuncias@sian.asoayudame.org",
     subject: "Notificacion | Reportes ",
     text: `¡Hola Autoridades Judiciales! El SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL -SIAN- acaba de regitrar el siguente ${newReporte.tipo_denuncia_reportes}: 
       \n Lugar: ${newReporte.ubicacion_reportes}
