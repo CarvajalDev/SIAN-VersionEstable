@@ -143,7 +143,7 @@ router.post("/forgot", async (req, res) => {
       to: `${newEmail}`,
       subject: "Recuperación de Contraseña | SIAN ",
       html: `<P>Tu pediste la recuperación de contraseña:</p>
-        <h5>Este es el <a href="http://localhost:4000/reset/${recuperar.resetToken}">Enlace</a> para cambiar tu contraseña. Asegurate de recordarla y sobre todo que sea segura</h5>`,
+        <h5>Este es el <a href="https://sianneiva.herokuapp.com/reset/${recuperar.resetToken}">Enlace</a> para cambiar tu contraseña. Asegurate de recordarla y sobre todo que sea segura</h5>`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
