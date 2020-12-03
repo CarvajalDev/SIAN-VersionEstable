@@ -94,6 +94,7 @@ app.use("/reportes", require("./routes/reportes"));
 app.use("/busca", require("./routes/seBusca"));
 app.use("/reset", require("./routes/reset"));
 app.use("/upload", require("./routes/upload"));
+app.use("/verificar-cuenta", require("./routes/verificar"));
 
 //public
 app.use(express.static(path.join(__dirname, "public")));

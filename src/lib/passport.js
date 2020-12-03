@@ -89,9 +89,15 @@ passport.use(
 
       const mailOptions = {
         from: "notificaciones@sian.asoayudame.org",
-        to: "h_carvajal@outlook.es",
-        subject: "Notificacion | Reportes ",
-        text: `Este es un mensaje automático, evite responder a este correo.`,
+        to: `${newUser.email}`,
+        subject: "Correo de Verificación | SIAN",
+        html: `<h1>Bienvenido al SISTEMA INTEGRAL DE INFORMACIÓN ANIMAL</h1>
+        <p>Estás a un paso de terminar tu registro en SIAN. Solo resta verificar tu cuenta para confirmar que este es tu correo electrónico.</p>
+        <br>
+        <h3><a href="https://sianneiva.herokuapp.com/verificar-cuenta">Verificar Cuenta</a></h3>
+        
+        
+        <p>Este es un mensaje automático, evite responder a este correo.</p>`,
       };
 
       transporter.sendMail(mailOptions, function (error, info) {
