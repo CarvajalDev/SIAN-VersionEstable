@@ -19,11 +19,18 @@ const { isLoggedIn } = require("../lib/auth");
 
 router.get("/add-extraviado", isLoggedIn, async (req, res) => {
   const razas = await pool.query("SELECT nombre_raza FROM razas");
+  const especies = await pool.query("SELECT * FROM especies");
   const nombreRazas = razas.map((elegir) => {
     return elegir.nombre_raza;
   });
   res.render("seBusca/add-extraviados", {
     raza: nombreRazas,
+    especies1: especies[0],
+    especies2: especies[1],
+    especies3: especies[2],
+    especies4: especies[3],
+    especies5: especies[4],
+    especies6: especies[5],
   });
 });
 
@@ -36,6 +43,8 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
     caracteristica_seBusca,
     telefono_seBusca,
     recompensa_seBusca,
+    especie_mascota_seBusca,
+    otra_especie_seBusca,
     foto_seBusca,
     tipo_seBusca,
   } = req.body;
@@ -51,6 +60,8 @@ router.post("/add-extraviado", isLoggedIn, async (req, res) => {
     telefono_seBusca,
     recompensa_seBusca,
     tipo_seBusca,
+    especie_mascota_seBusca,
+    otra_especie_seBusca,
     foto_seBusca: result.url,
     user_id: req.user.id,
   };
@@ -111,7 +122,7 @@ router.get("/", isLoggedIn, async (req, res) => {
 router.get("/delete/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   await pool.query("DELETE FROM busquedas WHERE id = ?", [id]);
-  req.flash("success", "Eliminada Publicacíon de Mascota ");
+  req.flash("success", "Publicacíon de Mascota Eliminada");
   res.redirect("/busca");
 });
 

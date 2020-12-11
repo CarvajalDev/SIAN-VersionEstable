@@ -15,9 +15,30 @@
                         </div>
                     </div>
 
-
+                <!--
                 <div class="card-body">
+                        <h2 class="text-center">Datos Actuales de tu Mascota</h2><br>
+                        <div class="form-row mt-10 text-center">
+                            <div class="col-lg-6 col-md-6">
+                                <label for=""><b>Historia Clínica actual de tu mascota: </b></label>
+                                <div class="select-itms">
+                                        <h4><a href="{{mascota.historia_clinica_mascota}}" download="Historia Clinica.docx" style="color: blue;">ver historia clínica</a></h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <label for=""><b>Esquema de Vacunación actual de tu mascota:
+                                    </b></label>
+                                <div class="select-itms">
+                                    <h4><a href="#" style="color: blue;">ver esquema de vacunación</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    <br>
+                    <br>
+                    <br> -->
+                   
                     <form action="/mascotas/salud/{{mascota.id}}" method="POST" enctype="multipart/form-data">
+                     <h2 class="text-center">Actualizar Datos Médicos</h2><br>
                     <!-- PREGUNTAS -->
                         <div class="form-row mt-10 text-center">
                             <div class="col-lg-6 col-md-6">
@@ -30,7 +51,7 @@
                                     <label>No</label>
                                 </div>
                             </div>
-                            <div class="col-lg- col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <label for=""><span style="color: red;">* </span><b>¿Posees el Esquema de Vacunación de tu mascota?:
                                     </b></label>
                                 <div class="select-itms">

@@ -12,9 +12,10 @@
                                     required>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Tipo de Busqueda:</b></label>
+                                <label for=""><span style="color: red;"><strong>* </strong></span><b>Tipo de Búsqueda:</b></label>
                                 <div class="form-group">
                                     <select name="tipo_seBusca" required>
+                                        <option value="">Elegir Búsqueda</option>
                                         <option value="Animales Extraviados">Animales Extraviados
                                         </option>
                                         <option value="Animales Hurtados">Animales Hurtados
@@ -24,44 +25,47 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-lg-2 col-md-2">
+                                <label for=""><span style="color: red;">* </span><b>Tipo de Especie:</b></label>
+                                <div class="select-itms">
+                                    <select id="especie" onchange="razasLista()" name="especie_mascota_seBusca" required>
+                                        <option value="">Elegir opción</option>
+                                        <option value="{{especies1.nombre_especie}}">{{especies1.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies3.nombre_especie}}">{{especies3.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies4.nombre_especie}}">{{especies4.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies5.nombre_especie}}">{{especies5.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies6.nombre_especie}}">{{especies6.nombre_especie}}
+                                        </option>
+                                        <option value="{{especies2.nombre_especie}}">{{especies2.nombre_especie}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-lg-3 col-md-3">
                                 <label for=""><span style="color: red;"><strong>* </strong></span><b>Raza de tu Mascota:</b></label>
                                 <div class="form-group">
-                                    <input type="text" id="otraInput" class="form-control" name="raza_seBusca" placeholder="Escribe la raza" autofocus>
+                                    <input type="text" id="otraInput" class="form-control" name="otra_especie_seBusca" placeholder="Otra Especie o Raza" autofocus>
                                     <div id="desaparecerSelect"> 
                                         <select id="raza" onchange="razasLista()" name="raza_seBusca" required>
                                             <option value="">Elegir Raza</option>
-                                            <option value="desconocida">No se conoce</option>
-                                            <option value="siamés">siamés</option>
-                                            <option value="somalí">somalí</option>
-                                            <option value="Ragdoll">Ragdoll</option>
-                                            <option value="Persa">Persa</option>
-                                            <option value="Maine Coon">Maine Coon</option>
-                                            <option value="Común Europeo">Común Europeo</option>
-                                            <option value="Ruso Azul">Ruso Azul</option>
-                                            <option value="Bobtail americano">Bobtail americano</option>
-                                            <option value="Siberiano">Siberiano</option>
-                                            <option value="Manés">Manés</option>
-                                            <option value="Birmano o Burmés">Birmano o Burmés</option>
-                                            {{#each raza}}
-                                            <option value="{{this}}">{{this}}</option>
-                                            {{/each}}
-                                            <option value="Otra">Otra</option>
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-10 ">
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4"><span style="color: red;"><strong>* </strong></span><b>Nombre:</b></label>
+                                <input type="text" id="myminNombre" class="form-control" name="nombre_seBusca"
+                                    placeholder="Nombre de la Mascota Extraviada" minlength="3" maxlength="30" required>
                             </div>
                             <div class="col-lg-2 col-md-2">
                                 <label for=""><span style="color: red;"><strong>* </strong></span><b>Edad de Mascota:</b></label>
                                 <input type="text" id="edadMascotaVali" class="form-control" name="edad_seBusca"
                                     placeholder="2 años" minlength="4" maxlength="8" required>
-                            </div>
-                        </div>
-                        <div class="form-row mt-10 ">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4"><span style="color: red;"><strong>* </strong></span><b>Nombre:</b></label>
-                                <input type="text" id="myminNombre" class="form-control" name="nombre_seBusca"
-                                    placeholder="Nombre de la Mascota Extraviada" minlength="3" maxlength="30" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for=""><span style="color: red;"><strong>* </strong></span><b>Lugar Donde se Extravió:</b></label>
@@ -109,19 +113,89 @@ var desaparecerSelect = document.getElementById('desaparecerSelect');
     function otra(){
     otraInput.style.display ='none';
     otraInput.disabled="true";
-}
-otra();
-function razasLista() {
-
-    var tomaLista = document.getElementById('raza').value;
-    if (tomaLista === "Otra") {
-        otraInput.style.display ='block';
-        desaparecerSelect.style.display ='none';
-        document.getElementById('raza').disabled="true";
-        otraInput.removeAttribute('disabled');
-        
     }
+    otra();
 
-}
+    /*function razasLista() {
+
+        var tomaLista = document.getElementById('especie').value;
+        if (tomaLista === "Otra") {
+            otraInput.style.display ='block';
+            desaparecerSelect.style.display ='none';
+            //document.getElementById('raza').disabled="true";
+            //otraInput.removeAttribute('disabled');      
+        }
+
+    }*/
+</script>
+
+<script>
+
+
+    function razasLista() {
+        var tomaLista = document.getElementById('especie').value;
+
+        if (tomaLista === "Canina") {
+
+            otraInput.style.display ='none';
+            desaparecerSelect.style.display ='block';
+            otraInput.disabled="true";
+            var array = ["Elegir Raza", "No se conoce", "Beagle", "Boxer", "Bulldog Frances", "Bulldog inglés", "Chihuahua", "Chow chow", "Cocker spaniel", "Criollo y/o Mestizo", "Frespuder", "Golden Retrevier", "Husky siberiano", "Labrador Retriver", "Pastor Aleman", "Perro salchicha", "Pinscher", "Poodle", "San Bernardo", "Schnauzer", "Shar pei", "Shih tzu", "Shorkie", "Yorshire Terrier", "American Staffordshire Terrier", "Bullmastiff", "Dóberman", "Dogo Argentino ó Gran danés", "Dogo de Burdeos", "Fila Brasileiro", "Mastín Napolitano", "Bull Terrier", "Pit Bull Terrier", "American Pit Bull Terrier", "de presa canario", "Rottweiler", "Staffordshire Terrier", "Tosa Japonés"];
+        
+        } else if (tomaLista === "Felino(a)") {
+
+            otraInput.style.display ='none';
+            desaparecerSelect.style.display ='block';
+            otraInput.disabled="true";
+            var array = ["Elegir Raza", "No se conoce", "siamés", "somalí", "Ragdoll", "Persa", "Maine Coon", "Común Europeo", "Ruso Azul", "Bobtail americano", "Siberiano", "Manés", "Birmano o Burmés"];
+        
+        } else if (tomaLista === "Caballo") {
+
+            otraInput.style.display ='none';
+            desaparecerSelect.style.display ='block';
+            otraInput.disabled="true";
+            var array = ["No se conoce"];
+        
+        } else if (tomaLista === "Burro") {
+
+            otraInput.style.display ='none';
+            desaparecerSelect.style.display ='block';
+            otraInput.disabled="true";
+            var array = ["No se conoce"];
+        
+        } else if (tomaLista === "Cabra") {
+
+            otraInput.style.display ='none';
+            desaparecerSelect.style.display ='block';
+            otraInput.disabled="true";
+            var array = ["No se conoce"];
+        
+        } else if (tomaLista === "Otra") {
+
+            otraInput.style.display ='block';
+            desaparecerSelect.style.display ='none';
+            otraInput.removeAttribute('disabled');
+            document.getElementById('raza').disabled="true";
+            //document.getElementById('raza').disabled="true";
+            //otraInput.removeAttribute('disabled');
+        
+        }
+        else {
+            
+            var array = [];
+        
+        }
+
+        var string = " ";
+        for (i = 0; i < array.length; i++) {
+        ary = array[i];
+        //string = string + "<option value=" + array[i] + ">" + array[i] + "</option>";
+        string = `${string} <option value="${ary}"> ${ary} </option>`;
+        }
+
+        string = "<select name='raza_seBusca'>" + string + "</select>";
+
+        document.getElementById('desaparecerSelect').innerHTML = string;
+    }
 
 </script>
