@@ -15,30 +15,43 @@
                         </div>
                     </div>
 
-                <!--
+                
                 <div class="card-body">
-                        <h2 class="text-center">Datos Actuales de tu Mascota</h2><br>
+                        <h3 class="text-center">Datos Actuales de <b>{{mascota.nombre_mascota}}</b></h3><br>
                         <div class="form-row mt-10 text-center">
                             <div class="col-lg-6 col-md-6">
                                 <label for=""><b>Historia Clínica actual de tu mascota: </b></label>
+                                {{#if mascota.historia_clinica_mascota}}
                                 <div class="select-itms">
-                                        <h4><a href="{{mascota.historia_clinica_mascota}}" download="Historia Clinica.docx" style="color: blue;">ver historia clínica</a></h4>
+                                        <label><a href="/uploads/{{mascota.historia_clinica_mascota}}" download="HistoriaClinica" style="color: blue;"><u>ver historia clínica</u></a></label>
                                 </div>
+                                {{else}}
+                                <div class="select-itms">
+                                        <label style="color: red;"><i class="fas fa-exclamation-triangle"></i> No tiene historia clínica</label><br>
+                                        <label><b>Nota:</b> {{mascota.detalle_historia_clinica}}</label>
+                                </div>
+                                {{/if}}
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <label for=""><b>Esquema de Vacunación actual de tu mascota:
-                                    </b></label>
+                                <label for=""><b>Esquema de Vacunación actual de tu mascota:</b></label>
+                                {{#if mascota.vacunacion_mascota}}
                                 <div class="select-itms">
-                                    <h4><a href="#" style="color: blue;">ver esquema de vacunación</a></h4>
+                                    <label><a href="/uploads/{{mascota.historia_clinica_mascota}}" download="EsquemaVacunacion" style="color: blue;"><u> ver esquema de vacunación </u></a></label>
                                 </div>
+                                {{else}}
+                                <div class="select-itms">
+                                        <label style="color: red;"><i class="fas fa-exclamation-triangle"></i> No tiene esquema de vacunación</label><br>
+                                        <label><b>Nota:</b> {{mascota.detalle_vacunacion_mascota}}</label>
+                                </div>
+                                {{/if}}
                             </div>
                         </div>
                     <br>
                     <br>
-                    <br> -->
+                    <br>
                    
                     <form action="/mascotas/salud/{{mascota.id}}" method="POST" enctype="multipart/form-data">
-                     <h2 class="text-center">Actualizar Datos Médicos</h2><br>
+                     <h3 class="text-center">Actualizar Datos Médicos de <b>{{mascota.nombre_mascota}}</b></h3><br>
                     <!-- PREGUNTAS -->
                         <div class="form-row mt-10 text-center">
                             <div class="col-lg-6 col-md-6">

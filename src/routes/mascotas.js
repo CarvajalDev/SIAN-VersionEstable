@@ -251,7 +251,8 @@ router.post("/salud/:id", isLoggedIn, async (req, res) => {
   } = req.body;
 
     try{
-      var fileUploadHistoria = req.files["historia_clinica_mascota"][0].path;
+      var fileUploadHistoria = req.files["historia_clinica_mascota"][0].filename;
+      console.log(fileUploadHistoria);
     } catch(err) {
       if( err instanceof TypeError){
         console.error('CUSTOM ERROR:', err);
@@ -262,7 +263,7 @@ router.post("/salud/:id", isLoggedIn, async (req, res) => {
     
 
     try{
-      var fileUploadVacuna = req.files["vacunacion_mascota"][0].path;
+      var fileUploadVacuna = req.files["vacunacion_mascota"][0].filename;
     } catch(err){
       if(err instanceof TypeError){
         console.error(err);

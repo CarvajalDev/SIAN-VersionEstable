@@ -26,7 +26,7 @@ passport.use(
           user.password
         );
         if (validPassword) {
-          done(null, user, req.flash("success", "Bienvenido " + user.email));
+          done(null, user, req.flash("success", "Hola, " + user.nombre + ". Haz iniciado sesión en SIAN"));
         } else {
           done(null, false, req.flash("message", "Contraseña Incorrecta"));
         }
